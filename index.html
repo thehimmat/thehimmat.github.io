@@ -1,17 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Himmat</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Himmat</title>
+  <link href="output.css" rel="stylesheet">
 </head>
-<body>
-    <h1>Welcome to The Himmat</h1>
-    <p>Your gateway to my projects and professional journey.</p>
-    <a href="resume.pdf" target="_blank">View My Resume</a>
-    <ul>
-        <li><a href="https://github.com/thehimmat/project1" target="_blank">Project 1</a></li>
-        <li><a href="https://github.com/thehimmat/project2" target="_blank">Project 2</a></li>
-    </ul>
+<body class="bg-gray-100 text-gray-800">
+    <header class="bg-blue-600 text-white text-center py-10 shadow-lg">
+        <h1 class="text-5xl font-extrabold">Himmat S. Khalsa</h1>
+        <p class="text-lg mt-2">Software Engineer | Full Stack Developer</p>
+        <div class="flex justify-center space-x-4 mt-4">
+            <a href="https://github.com/thehimmat" class="hover:text-blue-200" target="_blank">GitHub</a>
+            <a href="https://linkedin.com/in/himmatkhalsa" class="hover:text-blue-200" target="_blank">LinkedIn</a>
+            <span>Portland, OR</span>
+        </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto mt-10 px-4 sm:px-6 lg:px-8">
+        <section class="mb-12">
+            <h2 class="text-3xl font-semibold mb-6">Technical Skills</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="border p-4 rounded-lg">
+                    <h3 class="font-bold mb-2">Languages</h3>
+                    <p>JavaScript, TypeScript, Python, Java, Groovy</p>
+                </div>
+                <div class="border p-4 rounded-lg">
+                    <h3 class="font-bold mb-2">Frontend</h3>
+                    <p>React, HTML, CSS, Bootstrap, Flexbox, styled-components</p>
+                </div>
+                <div class="border p-4 rounded-lg">
+                    <h3 class="font-bold mb-2">Backend</h3>
+                    <p>FastAPI, Express, Node.js, Socket.IO, RESTful APIs</p>
+                </div>
+                <div class="border p-4 rounded-lg">
+                    <h3 class="font-bold mb-2">Databases</h3>
+                    <p>PostgreSQL, MySQL, MongoDB, Snowflake, Google BigQuery</p>
+                </div>
+                <div class="border p-4 rounded-lg">
+                    <h3 class="font-bold mb-2">Cloud & AI</h3>
+                    <p>AWS (Lambda, EC2, S3), wav2vec2, PyTorch, Hugging Face</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-12">
+            <h2 class="text-3xl font-semibold mb-6">Featured Projects</h2>
+            <div class="space-y-6">
+                <div class="border p-6 rounded-lg hover:bg-gray-50">
+                    <h3 class="text-xl font-bold text-blue-600">
+                        <a href="https://github.com/thehimmat/gurmukhi-voice-search" target="_blank" class="hover:underline">
+                            Gurmukhi Voice Search & Transliteration Tools
+                        </a>
+                    </h3>
+                    <p class="mt-2">A full-stack web application enabling tools for studying Gurmukhi (ਗੁਰਮੁਖੀ) scriptures, featuring AI-powered voice search and transliteration.</p>
+                    <ul class="list-disc ml-6 mt-3">
+                        <li>Built with React.js, TypeScript, FastAPI, and Python</li>
+                        <li>Implements advanced transliteration systems and AI-based phonetic matching</li>
+                        <li>Features RESTful API for audio processing using wav2vec2</li>
+                    </ul>
+                </div>
+
+                <div class="border p-6 rounded-lg hover:bg-gray-50">
+                    <h3 class="text-xl font-bold text-blue-600">
+                        <a href="https://github.com/thehimmat/werewolf" target="_blank" class="hover:underline">
+                            Werewolf Online
+                        </a>
+                    </h3>
+                    <p class="mt-2">Multiplayer game with real-time chat functionality</p>
+                    <ul class="list-disc ml-6 mt-3">
+                        <li>Built with React, MongoDB, and Socket.IO</li>
+                        <li>Deployed on AWS EC2</li>
+                        <li>Features Bootstrap styling and custom animations</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-12">
+            <h2 class="text-3xl font-semibold mb-6">Professional Experience</h2>
+            <div class="space-y-6">
+                <div class="border p-6 rounded-lg">
+                    <h3 class="text-xl font-bold">Software Engineer I - Alkami Technology, Inc</h3>
+                    <p class="text-gray-600">May 2022 - January 2024</p>
+                    <ul class="list-disc ml-6 mt-3">
+                        <li>Developed and optimized digital banking applications serving 18M+ monthly active users</li>
+                        <li>Built security services and maintained React/TypeScript applications</li>
+                    </ul>
+                </div>
+
+                <div class="border p-6 rounded-lg">
+                    <h3 class="text-xl font-bold">Content Platform Engineer - Kundalini Mobile</h3>
+                    <p class="text-gray-600">January - December 2021</p>
+                    <ul class="list-disc ml-6 mt-3">
+                        <li>Developed React Native content management interface</li>
+                        <li>Engineered audio processing workflow and UX improvements</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-800 text-white text-center py-6 mt-10">
+        <p>© 2024 Himmat S. Khalsa</p>
+    </footer>
 </body>
 </html>
