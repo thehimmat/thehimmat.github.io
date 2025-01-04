@@ -727,6 +727,10 @@ video {
   max-width: 42rem;
 }
 
+.max-w-3xl {
+  max-width: 48rem;
+}
+
 .flex-grow {
   flex-grow: 1;
 }
@@ -1061,6 +1065,14 @@ video {
     width: 50%;
   }
 
+  .sm\:max-w-2xl {
+    max-width: 42rem;
+  }
+
+  .sm\:justify-start {
+    justify-content: flex-start;
+  }
+
   .sm\:gap-8 {
     gap: 2rem;
   }
@@ -1088,6 +1100,10 @@ video {
 
   .sm\:pb-6 {
     padding-bottom: 1.5rem;
+  }
+
+  .sm\:text-left {
+    text-align: left;
   }
 
   .sm\:text-5xl {
