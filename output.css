@@ -828,6 +828,10 @@ video {
   scroll-margin-top: -5rem;
 }
 
+.-scroll-mt-2 {
+  scroll-margin-top: -0.5rem;
+}
+
 .grid-cols-1 {
   grid-template-columns: repeat(1, minmax(0, 1fr));
 }
