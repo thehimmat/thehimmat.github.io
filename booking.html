@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book a Meeting | Himmat Singh Khalsa</title>
+    <link href="./output.css" rel="stylesheet">
+    <link rel="icon" type="image/png" href="hFavicon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Ensure Cal.com embed is responsive */
+        .cal-embed-container {
+            min-height: 600px;
+            height: calc(100vh - 200px);
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-900 font-['Montserrat'] min-h-screen flex flex-col">
+    <header class="fixed w-full top-0 z-50">
+        <div class="bg-gray-900 text-center py-4 sm:pt-10 sm:pb-12 relative">
+            <div class="relative z-10 px-4">
+                <h1 class="text-3xl sm:text-5xl font-bold text-white">Himmat Singh Khalsa</h1>
+                <p class="text-base sm:text-lg mt-2 text-gray-300">Software Engineer | Full Stack Developer</p>
+                <nav class="flex flex-wrap justify-center gap-3 sm:gap-8 mt-3 sm:mt-4 pb-4 sm:pb-6">
+                    <a href="index.html" class="text-gray-300 hover:text-white hover:underline transition-all duration-200">Home</a>
+                    <a href="projects.html" class="text-gray-300 hover:text-white hover:underline transition-all duration-200">Projects</a>
+                    <a href="index.html#about" class="text-gray-300 hover:text-white hover:underline transition-all duration-200">About Me</a>
+                    <a href="contact.html" class="text-gray-300 hover:text-white hover:underline transition-all duration-200">Contact</a>
+                </nav>
+            </div>
+            <div class="absolute bottom-0 left-0 w-full overflow-hidden">
+                <svg viewBox="0 0 1440 100" preserveAspectRatio="none" class="relative block w-full h-[25px] sm:h-[50px]">
+                    <path fill="rgba(255,255,255,0)" d="M0,100 C480,0 960,0 1440,100 L1440,100 L0,100 Z"></path>
+                </svg>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-4 py-12 sm:px-6 lg:px-8 flex-1" style="margin-top: max(120px, 20vh)">
+        <section class="pt-4">
+            <h2 class="text-3xl font-bold mb-8 text-center">Book a Meeting</h2>
+            <p class="text-center text-gray-600 mb-8 max-w-2xl mx-auto">
+                Schedule a time to chat about software engineering, consulting opportunities, or collaboration.
+            </p>
+
+            <!-- Meeting Type Selector -->
+            <div class="flex justify-center gap-4 mb-8">
+                <button onclick="loadCalendar('himmat/30min')"
+                        class="px-6 py-3 bg-gray-900 text-white rounded-lg hover:bg-gray-700 transition-all duration-200 font-medium active-meeting-btn"
+                        id="btn-30min">
+                    30 Minute Meeting
+                </button>
+                <button onclick="loadCalendar('himmat/15min')"
+                        class="px-6 py-3 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition-all duration-200 font-medium"
+                        id="btn-15min">
+                    15 Minute Meeting
+                </button>
+            </div>
+
+            <!-- Cal.com Embed Container -->
+            <div class="cal-embed-container bg-white rounded-lg shadow-sm" id="cal-container">
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-900 text-white text-center relative mt-auto">
+        <div class="absolute top-0 left-0 w-full overflow-hidden rotate-180">
+            <svg viewBox="0 0 1440 100" preserveAspectRatio="none" class="relative block w-full h-[50px]">
+                <path fill="#ffffff" d="M0,100 C480,0 960,0 1440,100 L1440,100 L0,100 Z"></path>
+            </svg>
+        </div>
+        <div class="pt-16 pb-6">
+            <p class="text-gray-400">© 2024 Himmat S. Khalsa</p>
+        </div>
+    </footer>
+
+    <!-- Cal.com embed script -->
+    <script type="text/javascript">
+        (function (C, A, L) {
+            let p = function (a, ar) { a.q.push(ar); };
+            let d = C.document;
+            C.Cal = C.Cal || function () {
+                let cal = C.Cal;
+                let ar = arguments;
+                if (!cal.loaded) {
+                    cal.ns = {};
+                    cal.q = cal.q || [];
+                    d.head.appendChild(d.createElement("script")).src = A;
+                    cal.loaded = true;
+                }
+                if (ar[0] === L) {
+                    const api = function () { p(api, arguments); };
+                    const namespace = ar[1];
+                    api.q = api.q || [];
+                    typeof namespace === "string" ? (cal.ns[namespace] = api) && p(api, ar) : p(cal, ar);
+                    return;
+                }
+                p(cal, ar);
+            };
+        })(window, "https://app.cal.com/embed/embed.js", "init");
+
+        Cal("init", {origin:"https://cal.com"});
+
+        let currentCalLink = 'himmat/30min';
+
+        // Function to load calendar with selected meeting type
+        function loadCalendar(calLink) {
+            currentCalLink = calLink;
+
+            // Update button styles
+            document.querySelectorAll('button[id^="btn-"]').forEach(btn => {
+                btn.classList.remove('bg-gray-900', 'text-white', 'active-meeting-btn');
+                btn.classList.add('bg-gray-200', 'text-gray-700');
+            });
+
+            const activeBtn = calLink.includes('30min') ? document.getElementById('btn-30min') : document.getElementById('btn-15min');
+            activeBtn.classList.remove('bg-gray-200', 'text-gray-700');
+            activeBtn.classList.add('bg-gray-900', 'text-white', 'active-meeting-btn');
+
+            // Clear and reload calendar
+            const container = document.getElementById('cal-container');
+            container.innerHTML = '';
+
+            Cal("inline", {
+                elementOrSelector: "#cal-container",
+                calLink: calLink,
+                layout: "month_view"
+            });
+
+            Cal("ui", {
+                "styles": {"branding": {"brandColor": "#000000"}},
+                "hideEventTypeDetails": false,
+                "layout": "month_view"
+            });
+        }
+
+        // Load default calendar (30min) on page load
+        window.addEventListener('load', function() {
+            loadCalendar('himmat/30min');
+        });
+    </script>
+</body>
+</html>
