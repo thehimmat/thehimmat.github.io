@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Support — Himmat Singh Khalsa</title>
+  <link href="./output.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="hFavicon.png">
+  <style>
+    :root {
+      --parchment: #fef8e8;
+      --parchment-dark: #f5edd8;
+      --charcoal: #3d3633;
+      --charcoal-light: #6b5f58;
+      --warm-brown: #7c6a52;
+      --warm-brown-light: #a89278;
+      --divider: #e8dcc8;
+    }
+    body { background-color: var(--parchment); color: var(--charcoal); font-family: 'Montserrat', sans-serif; margin: 0; }
+    h1, h2, h3 { font-family: 'Crimson Pro', serif; }
+    .site-nav { position: fixed; top: 0; width: 100%; z-index: 50; background-color: var(--parchment); border-bottom: 1px solid var(--divider); }
+    .site-nav a { color: var(--charcoal-light); font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; transition: color 0.2s; }
+    .site-nav a:hover { color: var(--charcoal); }
+    .section-label { font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--warm-brown); font-family: 'Montserrat', sans-serif; font-weight: 600; }
+    .card { background: var(--parchment-dark); border: 1px solid var(--divider); border-radius: 6px; padding: 1.5rem; }
+    .btn-primary { display: inline-block; background: var(--charcoal); color: var(--parchment); font-size: 0.85rem; letter-spacing: 0.05em; padding: 0.6rem 1.4rem; border-radius: 4px; text-decoration: none; transition: background 0.2s; }
+    .btn-primary:hover { background: var(--warm-brown); }
+    footer { background: var(--charcoal); color: var(--warm-brown-light); }
+    footer a { color: var(--parchment-dark); text-decoration: none; }
+    footer a:hover { color: white; }
+  </style>
+</head>
+<body>
+
+  <nav class="site-nav">
+    <div style="max-width: 56rem; margin: 0 auto; padding: 1rem 1.5rem; display: flex; justify-content: space-between; align-items: center;">
+      <a href="index.html" style="font-family: 'Crimson Pro', serif; font-size: 1.05rem; color: var(--charcoal); font-weight: 600; text-decoration: none; text-transform: none; letter-spacing: normal;">Himmat Singh Khalsa</a>
+      <div style="display: flex; gap: 1.5rem; align-items: center; flex-wrap: wrap;">
+        <a href="index.html#build">Build</a>
+        <a href="index.html#teach">Teach</a>
+        <a href="index.html#coach">Coach</a>
+        <a href="index.html#about">About</a>
+        <a href="support.html">Support</a>
+      </div>
+    </div>
+  </nav>
+
+  <main style="max-width: 56rem; margin: 0 auto; padding: 0 1.5rem;">
+
+    <section style="padding: 7rem 0 3rem;">
+      <p class="section-label" style="margin-bottom: 1.5rem;">Support</p>
+      <h1 style="font-size: clamp(2.2rem, 4vw, 3.2rem); line-height: 1.2; margin-bottom: 1.25rem;">
+        Support this work
+      </h1>
+      <p style="font-size: 1.05rem; color: var(--charcoal-light); max-width: 36rem; line-height: 1.7; margin-bottom: 3rem;">
+        The Gurmukhi tools and teaching resources I'm building are free and
+        open to all. If they've been useful to you, or you want to help them
+        keep developing, you can support the work through Ko-fi.
+      </p>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); gap: 1.5rem; margin-bottom: 3rem;">
+
+        <div class="card">
+          <h3 style="font-size: 1.4rem; margin-bottom: 0.5rem; color: var(--charcoal);">Gurmukhi Tools</h3>
+          <p style="font-size: 0.9rem; color: var(--charcoal-light); line-height: 1.6; margin-bottom: 1.25rem;">
+            Support the Gurbani search engine, voice tools, and the word-by-word dictionary of the Guru Granth Sahib.
+          </p>
+          <a href="https://ko-fi.com/thehimmat" target="_blank" class="btn-primary">Support on Ko-fi →</a>
+        </div>
+
+        <div class="card">
+          <h3 style="font-size: 1.4rem; margin-bottom: 0.5rem; color: var(--charcoal);">Gurmukhi Teaching</h3>
+          <p style="font-size: 0.9rem; color: var(--charcoal-light); line-height: 1.6; margin-bottom: 1.25rem;">
+            Support the free resources, recordings, and community learning at atthebunga.com.
+          </p>
+          <a href="https://ko-fi.com/atthebunga" target="_blank" class="btn-primary">Support on Ko-fi →</a>
+        </div>
+
+      </div>
+
+      <p style="font-size: 0.85rem; color: var(--charcoal-light); max-width: 32rem; line-height: 1.7;">
+        You can also support the teaching directly by booking a class at
+        <a href="https://atthebunga.com" target="_blank" style="color: var(--warm-brown);">atthebunga.com</a>
+        or sharing it with someone who might benefit.
+      </p>
+    </section>
+
+  </main>
+
+  <footer style="margin-top: 4rem; padding: 2.5rem 1.5rem; text-align: center;">
+    <div style="max-width: 56rem; margin: 0 auto;">
+      <p style="font-size: 0.82rem; margin-bottom: 0.5rem;">
+        <a href="https://atthebunga.com" target="_blank">atthebunga.com</a>
+        &nbsp;·&nbsp;
+        <a href="https://himmatcoaching.com" target="_blank">himmatcoaching.com</a>
+        &nbsp;·&nbsp;
+        <a href="https://github.com/thehimmat" target="_blank">GitHub</a>
+      </p>
+      <p style="font-size: 0.78rem; color: var(--warm-brown-light); margin-top: 0.5rem;">© 2025 Himmat Singh Khalsa</p>
+    </div>
+  </footer>
+
+</body>
+</html>

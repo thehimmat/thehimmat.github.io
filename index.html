@@ -1,185 +1,453 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-padding-top-32">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Himmat Singh Khalsa | Software Engineer</title>
+  <title>Himmat Singh Khalsa</title>
   <link href="./output.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="icon" type="image/png" href="hFavicon.png">
   <style>
-    html {
-        scroll-padding-top: 16rem;
+    :root {
+      --parchment: #fef8e8;
+      --parchment-dark: #f5edd8;
+      --charcoal: #3d3633;
+      --charcoal-light: #6b5f58;
+      --warm-brown: #7c6a52;
+      --warm-brown-light: #a89278;
+      --divider: #e8dcc8;
     }
-    @media (min-width: 640px) {
-        html {
-            scroll-padding-top: 8rem;
-        }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--parchment);
+      color: var(--charcoal);
+      font-family: 'Montserrat', sans-serif;
     }
+
+    h1, h2, h3, .serif {
+      font-family: 'Crimson Pro', serif;
+    }
+
+    /* Nav */
+    .site-nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 50;
+      background-color: var(--parchment);
+      border-bottom: 1px solid var(--divider);
+    }
+
+    .site-nav a {
+      color: var(--charcoal-light);
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .site-nav a:hover { color: var(--charcoal); }
+
+    /* Sections */
+    section { border-top: 1px solid var(--divider); }
+    section:first-of-type { border-top: none; }
+
+    .section-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--warm-brown);
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+    }
+
+    /* Cards */
+    .card {
+      background: var(--parchment-dark);
+      border: 1px solid var(--divider);
+      border-radius: 6px;
+      padding: 1.5rem;
+    }
+
+    .card-coming-soon {
+      display: inline-block;
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--warm-brown);
+      background: var(--parchment);
+      border: 1px solid var(--warm-brown-light);
+      border-radius: 3px;
+      padding: 0.2rem 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .card-live {
+      display: inline-block;
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #5a7a5a;
+      background: #eef5ee;
+      border: 1px solid #b8d4b8;
+      border-radius: 3px;
+      padding: 0.2rem 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    /* Links */
+    .link-arrow {
+      color: var(--warm-brown);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.9rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      transition: color 0.2s;
+    }
+    .link-arrow:hover { color: var(--charcoal); }
+
+    .btn-primary {
+      display: inline-block;
+      background: var(--charcoal);
+      color: var(--parchment);
+      font-size: 0.85rem;
+      letter-spacing: 0.05em;
+      padding: 0.6rem 1.4rem;
+      border-radius: 4px;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .btn-primary:hover { background: var(--warm-brown); }
+
+    .btn-outline {
+      display: inline-block;
+      border: 1px solid var(--charcoal);
+      color: var(--charcoal);
+      font-size: 0.85rem;
+      letter-spacing: 0.05em;
+      padding: 0.6rem 1.4rem;
+      border-radius: 4px;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .btn-outline:hover {
+      background: var(--charcoal);
+      color: var(--parchment);
+    }
+
+    /* Gurmukhi script styling */
+    .gurmukhi {
+      font-size: 1.3em;
+      color: var(--warm-brown);
+    }
+
+    /* Footer */
+    footer {
+      background: var(--charcoal);
+      color: var(--warm-brown-light);
+    }
+    footer a {
+      color: var(--parchment-dark);
+      text-decoration: none;
+    }
+    footer a:hover { color: white; }
   </style>
 </head>
-<body class="bg-white text-gray-900 font-['Montserrat']">
-    <header class="fixed w-full top-0 z-50">
-        <div class="bg-gray-900 text-center pt-6 sm:pt-10 relative">
-            <div class="relative z-10">
-                <h1 class="text-3xl sm:text-5xl font-bold text-white">Himmat Singh Khalsa</h1>
-                <p class="text-base sm:text-lg mt-2 text-gray-300">Software Engineer | Full Stack Developer</p>
-                <nav class="flex flex-wrap justify-center gap-4 sm:gap-8 mt-4 pb-8 sm:pb-16 px-4">
-                    <a href="index.html" class="text-gray-300 hover:text-white hover:underline transition-all duration-200">Home</a>
-                    <a href="projects.html" class="text-gray-300 hover:text-white hover:underline transition-all duration-200">Projects</a>
-                    <a href="index.html#about" class="text-gray-300 hover:text-white hover:underline transition-all duration-200">About Me</a>
-                    <a href="contact.html" class="text-gray-300 hover:text-white hover:underline transition-all duration-200">Contact</a>
-                </nav>
-            </div>
-            <div class="absolute bottom-0 left-0 w-full overflow-hidden">
-                <svg viewBox="0 0 1440 100" preserveAspectRatio="none" class="relative block w-full h-[30px] sm:h-[50px]">
-                    <path fill="#ffffff" d="M0,100 C480,0 960,0 1440,100 L1440,100 L0,100 Z"></path>
-                </svg>
-            </div>
-        </div>
-    </header>
+<body>
 
-    <main class="max-w-5xl mx-auto px-4 py-12 sm:px-6 lg:px-8 mt-[calc(48px+4rem)] sm:mt-48">
-        <!-- Welcome Section -->
-        <section class="mb-16 mt-4 sm:mt-0">
-            <h2 class="text-2xl font-bold text-center mb-4">Hi, I'm Himmat!</h2>
-            <p class="text-lg text-gray-600 leading-relaxed italic">
-                My passion for software engineering and languages stems from their shared ability to bridge gaps and foster connection. Both require empathy, problem-solving, and an appreciation for structure and nuance. This portfolio highlights how I bring these values to my work, from crafting intuitive user experiences to building scalable, impactful solutions.
+  <!-- Navigation -->
+  <nav class="site-nav">
+    <div style="max-width: 56rem; margin: 0 auto; padding: 1rem 1.5rem; display: flex; justify-content: space-between; align-items: center;">
+      <a href="index.html" style="font-family: 'Crimson Pro', serif; font-size: 1.05rem; color: var(--charcoal); font-weight: 600; text-decoration: none; text-transform: none; letter-spacing: normal;">Himmat Singh Khalsa</a>
+      <div style="display: flex; gap: 1.5rem; align-items: center; flex-wrap: wrap;">
+        <a href="#build">Build</a>
+        <a href="#teach">Teach</a>
+        <a href="#coach">Coach</a>
+        <a href="#about">About</a>
+        <a href="support.html">Support</a>
+      </div>
+    </div>
+  </nav>
+
+  <main style="max-width: 56rem; margin: 0 auto; padding: 0 1.5rem;">
+
+    <!-- Hero -->
+    <section style="padding: 7rem 0 5rem; border-top: none;">
+      <h1 style="font-size: clamp(2.4rem, 5vw, 3.8rem); line-height: 1.15; margin-bottom: 1.25rem; color: var(--charcoal);">
+        Builder. Teacher. Coach.
+      </h1>
+      <p style="font-size: 1.2rem; max-width: 38rem; color: var(--charcoal-light); line-height: 1.7; margin-bottom: 2.5rem;">
+        I spent twelve years in Amritsar living with Sikh scripture every day.
+        Now I build tools and spaces that help others connect to language,
+        culture, and meaning — through code, teaching, and coaching.
+      </p>
+      <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+        <a href="#build" class="btn-primary">See the work</a>
+        <a href="#about" class="btn-outline">About me</a>
+      </div>
+    </section>
+
+    <!-- Three-node overview -->
+    <section style="padding: 4rem 0;">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); gap: 1.5rem;">
+
+        <a href="#build" style="text-decoration: none;">
+          <div class="card" style="height: 100%;">
+            <p class="section-label" style="margin-bottom: 0.75rem;">Build</p>
+            <h3 style="font-size: 1.4rem; margin-bottom: 0.5rem; color: var(--charcoal);">Gurmukhi Tools Suite</h3>
+            <p style="font-size: 0.9rem; color: var(--charcoal-light); line-height: 1.6;">
+              A suite of tools for searching, studying, and understanding Gurbani — voice-driven, AI-assisted, in development.
             </p>
-        </section>
+          </div>
+        </a>
 
-        <!-- Technical Skills Section -->
-        <section class="mb-16">
-            <h2 class="text-3xl font-bold mb-8">Technical Skills</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="space-y-2">
-                    <h3 class="text-lg font-bold">Languages</h3>
-                    <p class="text-gray-600">JavaScript, TypeScript, Python, Java, Groovy</p>
-                </div>
-                
-                <div class="space-y-2">
-                    <h3 class="text-lg font-bold">Frontend</h3>
-                    <p class="text-gray-600">React, HTML, CSS, Bootstrap, Flexbox, styled-components</p>
-                </div>
-                
-                <div class="space-y-2">
-                    <h3 class="text-lg font-bold">Backend</h3>
-                    <p class="text-gray-600">FastAPI, Express, Node.js, Moqui Framework, Socket.IO, RESTful APIs</p>
-                </div>
-                
-                <div class="space-y-2">
-                    <h3 class="text-lg font-bold">Databases</h3>
-                    <p class="text-gray-600">PostgreSQL, MySQL, MongoDB, Snowflake, Google BigQuery, DBeaver</p>
-                </div>
+        <a href="#teach" style="text-decoration: none;">
+          <div class="card" style="height: 100%;">
+            <p class="section-label" style="margin-bottom: 0.75rem;">Teach</p>
+            <h3 style="font-size: 1.4rem; margin-bottom: 0.5rem; color: var(--charcoal);">atthebunga.com</h3>
+            <p style="font-size: 0.9rem; color: var(--charcoal-light); line-height: 1.6;">
+              Online Gurmukhi classes for English speakers and beginners. Group courses and individual sessions, open for booking.
+            </p>
+          </div>
+        </a>
 
-                <div class="space-y-2">
-                    <h3 class="text-lg font-bold">Development Tools</h3>
-                    <p class="text-gray-600">Git, GitHub, Axios, NPM/Yarn, ESLint/Prettier, Regex, Webpack, Babel, Postman</p>
-                </div>
+        <a href="#coach" style="text-decoration: none;">
+          <div class="card" style="height: 100%;">
+            <p class="section-label" style="margin-bottom: 0.75rem;">Coach</p>
+            <h3 style="font-size: 1.4rem; margin-bottom: 0.5rem; color: var(--charcoal);">Himmat Coaching</h3>
+            <p style="font-size: 0.9rem; color: var(--charcoal-light); line-height: 1.6;">
+              Parent coaching rooted in Simplicity Parenting — for families who want calm, clarity, and a more connected home.
+            </p>
+          </div>
+        </a>
 
-                <div class="space-y-2">
-                    <h3 class="text-lg font-bold">Testing</h3>
-                    <p class="text-gray-600">unittest, Jest, Mocha, Chai</p>
-                </div>
+      </div>
+    </section>
 
-                <div class="space-y-2">
-                    <h3 class="text-lg font-bold">Cloud & DevOps</h3>
-                    <p class="text-gray-600">AWS (Lambda, EC2, S3)</p>
-                </div>
 
-                <div class="space-y-2 lg:col-span-2">
-                    <h3 class="text-lg font-bold">AI & ML</h3>
-                    <p class="text-gray-600">wav2vec2, PyTorch, Hugging Face, SentenceTransformer, Text Similarity (jellyfish, cosine similarity)</p>
-                </div>
-            </div>
-        </section>
+    <!-- BUILD -->
+    <section id="build" style="padding: 5rem 0;">
+      <p class="section-label" style="margin-bottom: 1rem;">Build</p>
+      <h2 style="font-size: clamp(2rem, 4vw, 2.8rem); margin-bottom: 1rem; color: var(--charcoal);">
+        Software & tools
+      </h2>
+      <p style="font-size: 1.05rem; color: var(--charcoal-light); max-width: 36rem; line-height: 1.7; margin-bottom: 3rem;">
+        I work at the intersection of language and technology — building tools
+        that make Sikh scripture more accessible through search, voice, and
+        scholarly analysis.
+      </p>
 
-        <!-- Featured Project Section -->
-        <section class="mb-16">
-            <h2 class="text-3xl font-bold mb-12">Featured Project</h2>
-            <div class="block sm:flex gap-8 items-start">
-                <div class="w-full sm:w-1/2 order-2 sm:order-none mb-6 sm:mb-0">
-                    <img src="gurmukhiTransliteratorDemo.gif" 
-                         alt="Gurmukhi Transliteration Demo" 
-                         class="w-full rounded-lg shadow-lg"
-                    />
-                </div>
-                <div class="w-full sm:w-1/2">
-                    <h3 class="text-2xl font-bold mb-4">
-                        <a href="https://github.com/thehimmat/gurmukhi-voice-search" 
-                           class="hover:text-gray-600 hover:underline transition-all duration-200" 
-                           target="_blank">
-                            Gurmukhi Voice Search & Transliteration Tools (2024)
-                        </a>
-                    </h3>
-                    <p class="mb-4">A full-stack web application for studying Gurmukhi (ਗੁਰਮੁਖੀ) scriptures, featuring AI-powered voice search and transliteration.</p>
-                    <p class="text-gray-600">Tech Stack: React, TypeScript, FastAPI, Docker, Hugging Face, wav2vec2, Sentence-BERT, Python, unittest</p>
-                </div>
-            </div>
-            <div class="text-center mt-8">
-                <a href="projects.html" 
-                   class="inline-block text-lg text-gray-600 hover:text-gray-900 hover:underline transition-all duration-200">
-                    View More Projects →
-                </a>
-            </div>
-        </section>
-
-        <!-- Professional Experience Section -->
-        <section class="mb-16">
-            <h2 class="text-3xl font-bold mb-12">Professional Experience</h2>
-            <div class="space-y-16">
-                <div>
-                    <h3 class="text-xl font-bold">Software Engineer I - Alkami Technology, Inc</h3>
-                    <p class="text-gray-600 mt-1 mb-4">2022 - 2024</p>
-                    <ul class="space-y-2 text-gray-600">
-                        <li>Developed and optimized digital banking applications serving 18M+ monthly active users</li>
-                        <li>Built security services and maintained React/TypeScript applications</li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h3 class="text-xl font-bold">Content Platform Engineer - Kundalini Mobile</h3>
-                    <p class="text-gray-600 mt-1 mb-4">2021</p>
-                    <ul class="space-y-2 text-gray-600">
-                        <li>Developed React Native content management interface</li>
-                        <li>Engineered audio processing workflow and UX improvements</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <!-- About Me Section -->
-        <section id="about" class="mb-16 -scroll-mt-16 sm:scroll-mt-28">
-            <h2 class="text-3xl font-bold mb-8">About Me</h2>
-            <div class="space-y-6 text-gray-600">
-                <p>My passion for software engineering and languages stems from their shared ability to bridge gaps and foster connection. Both require empathy, problem-solving, and an appreciation for structure and nuance. This portfolio highlights how I bring these values to my work, from crafting intuitive user experiences to building scalable, impactful solutions.</p>
-                
-                <p>As a full-stack software engineer, I thrive on solving complex problems and designing thoughtful, user-centered applications. My professional journey has included both technical and creative projects. At Alkami Technology, I optimized over 20 UI screens and developed a Groovy-based service that helped protect over 18.5 million users from fraud. This experience strengthened my expertise in secure, scalable design and further deepened my interest in leveraging AI for innovative solutions.</p>
-                
-                <p>I'm particularly fascinated by the intersection of artificial intelligence and software architecture, and I'm dedicated to exploring how these technologies can create more adaptive and impactful systems. My background in education—having taught for six years at an international boarding school—along with my 13 years living in India and Russia, has enhanced my adaptability, communication skills, and appreciation for diverse perspectives.</p>
-                
-                <p>I'm flexible and open to exciting opportunities—whether remote or in cities where I can grow professionally and personally. I'm passionate about collaborating with teams that value innovation, creativity, and meaningful impact. If that sounds like your team, let's connect!</p>
-            </div>
-        </section>
-    </main>
-
-    <footer class="bg-gray-900 text-white text-center relative">
-        <div class="absolute top-0 left-0 w-full overflow-hidden rotate-180">
-            <svg viewBox="0 0 1440 100" preserveAspectRatio="none" class="relative block w-full h-[50px]">
-                <path fill="#ffffff" d="M0,100 C480,0 960,0 1440,100 L1440,100 L0,100 Z"></path>
-            </svg>
+      <!-- Gurmukhi Suite — featured -->
+      <div class="card" style="margin-bottom: 2rem;">
+        <span class="card-coming-soon">In development</span>
+        <h3 style="font-size: 1.6rem; margin-bottom: 0.5rem; color: var(--charcoal);">
+          Gurmukhi Tools Suite <span class="gurmukhi">ਗੁਰਮੁਖੀ</span>
+        </h3>
+        <p style="color: var(--charcoal-light); line-height: 1.7; margin-bottom: 1.5rem; font-size: 0.95rem;">
+          A set of interconnected applications for engaging with Gurbani — the sacred poetry of the Sikh Gurus.
+          Built on a shared database with AI-powered voice search and a comprehensive word-by-word dictionary.
+        </p>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr)); gap: 1rem; margin-bottom: 1.5rem;">
+          <div style="padding: 1rem; background: var(--parchment); border-radius: 4px; border: 1px solid var(--divider);">
+            <p style="font-weight: 600; font-size: 0.9rem; margin-bottom: 0.4rem; color: var(--charcoal);">Gurbani Search</p>
+            <p style="font-size: 0.83rem; color: var(--charcoal-light); line-height: 1.5;">Multi-mode search across scripture: substring, first-letter, regex, and phonetic pattern matching.</p>
+          </div>
+          <div style="padding: 1rem; background: var(--parchment); border-radius: 4px; border: 1px solid var(--divider);">
+            <p style="font-weight: 600; font-size: 0.9rem; margin-bottom: 0.4rem; color: var(--charcoal);">Gurmukhi Kosh</p>
+            <p style="font-size: 0.83rem; color: var(--charcoal-light); line-height: 1.5;">A dictionary of every word in the Guru Granth Sahib — with grammar, etymology, and every occurrence in scripture.</p>
+          </div>
+          <div style="padding: 1rem; background: var(--parchment); border-radius: 4px; border: 1px solid var(--divider);">
+            <p style="font-weight: 600; font-size: 0.9rem; margin-bottom: 0.4rem; color: var(--charcoal);">Voice Search</p>
+            <p style="font-size: 0.83rem; color: var(--charcoal-light); line-height: 1.5;">AI-powered speech recognition for Gurmukhi — say a line and find it. Uses wav2vec2 and semantic similarity.</p>
+          </div>
         </div>
-        <div class="pt-16 pb-6">
-            <p class="text-gray-400">© 2024 Himmat S. Khalsa</p>
-        </div>
-    </footer>
+        <a href="https://github.com/thehimmat" target="_blank" class="link-arrow">View on GitHub →</a>
+      </div>
 
-    <script>
-        window.onload = function() {
-            const emailEncoded = "h&#105;&#109;&#109;&#97;&#116;&#64;&#107;&#104;&#97;&#108;&#115;&#97;&#46;&#99;&#111;&#109;";
-            document.getElementById("secureEmail").innerHTML =
-                '<a href="mailto:' + emailEncoded + '" class="hover:text-white transition-colors duration-200">' + emailEncoded + '</a>';
-        };
-    </script>
+      <!-- Secondary work -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); gap: 1rem; margin-bottom: 2rem;">
+
+        <div class="card">
+          <span class="card-coming-soon">In progress</span>
+          <h3 style="font-size: 1.2rem; margin-bottom: 0.4rem; color: var(--charcoal);">Gurbani Diff</h3>
+          <p style="font-size: 0.85rem; color: var(--charcoal-light); line-height: 1.6; margin-bottom: 0.75rem;">
+            Side-by-side comparison of Gurbani text variants across digitization sources — for scholars and editors.
+          </p>
+        </div>
+
+        <div class="card">
+          <span class="card-live">Live</span>
+          <h3 style="font-size: 1.2rem; margin-bottom: 0.4rem; color: var(--charcoal);">PIR Sound Tracker</h3>
+          <p style="font-size: 0.85rem; color: var(--charcoal-light); line-height: 1.6; margin-bottom: 0.75rem;">
+            Real-time noise monitoring for Portland International Raceway — OCR, Supabase, live dashboard.
+          </p>
+          <a href="https://pir-sound-tracker.vercel.app" target="_blank" class="link-arrow" style="font-size: 0.83rem;">View live →</a>
+        </div>
+
+      </div>
+
+      <div style="padding: 1.25rem; background: var(--parchment-dark); border-radius: 4px; border: 1px solid var(--divider);">
+        <p style="font-size: 0.85rem; color: var(--charcoal-light);">
+          Prior: Software Engineer at <strong style="color: var(--charcoal);">Alkami Technology</strong> — digital banking for 18M+ users.
+          <a href="#about" style="color: var(--warm-brown); text-decoration: none;">More in About →</a>
+        </p>
+      </div>
+    </section>
+
+
+    <!-- TEACH -->
+    <section id="teach" style="padding: 5rem 0;">
+      <p class="section-label" style="margin-bottom: 1rem;">Teach</p>
+      <h2 style="font-size: clamp(2rem, 4vw, 2.8rem); margin-bottom: 1rem; color: var(--charcoal);">
+        Gurmukhi teaching
+      </h2>
+      <p style="font-size: 1.05rem; color: var(--charcoal-light); max-width: 36rem; line-height: 1.7; margin-bottom: 3rem;">
+        I've been teaching Gurmukhi online since 2020, especially for English
+        speakers who didn't grow up with Punjabi at home. The tools I'm building
+        are the technical layer of the same work.
+      </p>
+
+      <div class="card" style="margin-bottom: 2rem;">
+        <span class="card-live">Live · Open for booking</span>
+        <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; gap: 1.5rem;">
+          <div style="flex: 1; min-width: 16rem;">
+            <h3 style="font-size: 1.8rem; margin-bottom: 0.75rem; color: var(--charcoal);">
+              At the Bunga <span class="gurmukhi" style="font-size: 1em;">ਬੁੰਗਾ</span>
+            </h3>
+            <p style="color: var(--charcoal-light); line-height: 1.7; font-size: 0.95rem; margin-bottom: 1rem;">
+              Online Gurmukhi instruction with a focus on accurate pronunciation (santhiya),
+              the living meaning of the script, and direct connection with Gurbani.
+              Classes for all levels — from learning the alphabet to studying
+              Japuji Sahib word by word.
+            </p>
+            <p style="font-style: italic; font-family: 'Crimson Pro', serif; font-size: 1.05rem; color: var(--charcoal-light); margin-bottom: 1.25rem;">
+              "Where Sound Meets Meaning"
+            </p>
+            <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+              <a href="https://atthebunga.com" target="_blank" class="btn-primary">Visit atthebunga.com</a>
+              <a href="https://cal.com/atthebunga" target="_blank" class="btn-outline">Book a class</a>
+            </div>
+          </div>
+          <div style="flex-shrink: 0;">
+            <div style="border: 1px solid var(--divider); border-radius: 4px; padding: 1rem; background: var(--parchment); min-width: 12rem;">
+              <p style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--warm-brown); margin-bottom: 0.75rem; font-weight: 600;">Classes offered</p>
+              <ul style="font-size: 0.85rem; color: var(--charcoal-light); line-height: 2; list-style: none; padding: 0; margin: 0;">
+                <li>Gurmukhi Script &amp; Sound</li>
+                <li>Japuji Sahib</li>
+                <li>Gurbani Deep Dive</li>
+                <li>Youth Gurmukhi</li>
+                <li>Individual sessions</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <p style="font-size: 0.88rem; color: var(--charcoal-light); line-height: 1.7; max-width: 38rem;">
+        The Bungas were historic learning centers at the Golden Temple — open to
+        all, devoted to scholarship and practice. That spirit is what atthebunga.com
+        is trying to carry forward.
+      </p>
+    </section>
+
+
+    <!-- COACH -->
+    <section id="coach" style="padding: 5rem 0;">
+      <p class="section-label" style="margin-bottom: 1rem;">Coach</p>
+      <h2 style="font-size: clamp(2rem, 4vw, 2.8rem); margin-bottom: 1rem; color: var(--charcoal);">
+        Parent coaching
+      </h2>
+      <p style="font-size: 1.05rem; color: var(--charcoal-light); max-width: 36rem; line-height: 1.7; margin-bottom: 3rem;">
+        Six years as a residential counselor taught me that children thrive when life
+        is not rushed. I'm a certified Simplicity Parenting coach — working with
+        families who want calm, clarity, and a steadier home.
+      </p>
+
+      <div class="card">
+        <span class="card-live">Live · Portland + Remote</span>
+        <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; gap: 1.5rem;">
+          <div style="flex: 1; min-width: 16rem;">
+            <h3 style="font-size: 1.8rem; margin-bottom: 0.75rem; color: var(--charcoal);">Himmat Coaching</h3>
+            <p style="font-style: italic; font-family: 'Crimson Pro', serif; font-size: 1.05rem; color: var(--charcoal-light); margin-bottom: 0.75rem;">
+              "Simplicity, Rhythm, Connection"
+            </p>
+            <p style="color: var(--charcoal-light); line-height: 1.7; font-size: 0.95rem; margin-bottom: 1.25rem;">
+              Parent coaching for families who want calm, clarity, and confidence
+              in their home. Rooted in the Simplicity Parenting framework — grounded
+              in research, focused on reducing overwhelm and building real connection.
+            </p>
+            <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+              <a href="https://himmatcoaching.com" target="_blank" class="btn-primary">Visit himmatcoaching.com</a>
+              <a href="https://cal.com/himmat" target="_blank" class="btn-outline">Free intro call</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ABOUT -->
+    <section id="about" style="padding: 5rem 0;">
+      <p class="section-label" style="margin-bottom: 1rem;">About</p>
+      <h2 style="font-size: clamp(2rem, 4vw, 2.8rem); margin-bottom: 2rem; color: var(--charcoal);">
+        Himmat Singh Khalsa
+      </h2>
+
+      <div style="display: grid; grid-template-columns: 1fr; gap: 1.25rem; max-width: 42rem; font-size: 1rem; color: var(--charcoal-light); line-height: 1.8;">
+        <p>
+          I grew up in the Sikh tradition and spent twelve years living in Amritsar,
+          in Panjab, close to Sri Harimandir Sahib, the Golden Temple. I loved
+          experiencing Panjabi and Sikh culture through exploring ancient alleyways,
+          historic spiritual sites and of course the cuisine — langar, dhabas and
+          street food. That proximity gave me a deep respect and connection to
+          Panjab as a place, Panjabi as its language and Gurmukhi — the script used
+          to read and write the language. It was created as a system to be learned
+          by all, regardless of social status, cultural background or age. While
+          learning, I found a passion for understanding and breaking down the
+          precision of the script and the depth of what it has been used to write.
+        </p>
+        <p>
+          When I started learning to code, I knew immediately that this is what I
+          wanted to build. It took a while, but now I'm doing it.
+        </p>
+        <p>
+          The teaching and the tools feed each other — every class I teach shows me
+          what's missing, and every tool I build makes the teaching better.
+        </p>
+        <p>
+          I live in Portland, Oregon with my family.
+        </p>
+      </div>
+
+      <div style="margin-top: 2.5rem; padding-top: 2rem; border-top: 1px solid var(--divider); display: flex; gap: 1.5rem; flex-wrap: wrap; align-items: center;">
+        <a href="https://github.com/thehimmat" target="_blank" class="link-arrow">GitHub →</a>
+        <a href="mailto:himmatsinghkhalsa@gmail.com" class="link-arrow">Email →</a>
+        <a href="work-with-me.html" class="link-arrow">Work with me →</a>
+        <a href="support.html" class="link-arrow">Support this work →</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer style="margin-top: 4rem; padding: 2.5rem 1.5rem; text-align: center;">
+    <div style="max-width: 56rem; margin: 0 auto;">
+      <p style="font-size: 0.82rem; margin-bottom: 0.5rem;">
+        <a href="https://atthebunga.com" target="_blank">atthebunga.com</a>
+        &nbsp;·&nbsp;
+        <a href="https://himmatcoaching.com" target="_blank">himmatcoaching.com</a>
+        &nbsp;·&nbsp;
+        <a href="https://github.com/thehimmat" target="_blank">GitHub</a>
+        &nbsp;·&nbsp;
+        <a href="support.html">Support</a>
+      </p>
+      <p style="font-size: 0.78rem; color: var(--warm-brown-light); margin-top: 0.5rem;">© 2025 Himmat Singh Khalsa</p>
+    </div>
+  </footer>
+
 </body>
 </html>
