@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Himmat Singh Khalsa — builder, teacher, and coach. Gurmukhi tools, online Gurmukhi classes at atthebunga.com, and parent coaching at himmatcoaching.com.">
   <title>Himmat Singh Khalsa</title>
   <link href="./output.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
@@ -14,20 +15,62 @@
       --charcoal: #3d3633;
       --charcoal-light: #6b5f58;
       --warm-brown: #7c6a52;
+      --warm-brown-accessible: #6b5a44; /* darkened for small text contrast */
       --warm-brown-light: #a89278;
       --divider: #e8dcc8;
+      --nav-height: 3.5rem;
     }
 
-    html { scroll-behavior: smooth; }
+    /* Visually hidden — for screen readers only */
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: calc(var(--nav-height) + 1.5rem);
+    }
 
     body {
       background-color: var(--parchment);
       color: var(--charcoal);
       font-family: 'Montserrat', sans-serif;
+      margin: 0;
     }
 
     h1, h2, h3, .serif {
       font-family: 'Crimson Pro', serif;
+    }
+
+    /* Skip link */
+    .skip-link {
+      position: absolute;
+      top: -100%;
+      left: 1rem;
+      background: var(--charcoal);
+      color: var(--parchment);
+      padding: 0.5rem 1rem;
+      border-radius: 0 0 4px 4px;
+      font-size: 0.85rem;
+      text-decoration: none;
+      z-index: 200;
+      transition: top 0.1s;
+    }
+    .skip-link:focus { top: 0; }
+
+    /* Focus styles */
+    :focus-visible {
+      outline: 2px solid var(--warm-brown);
+      outline-offset: 3px;
+      border-radius: 2px;
     }
 
     /* Nav */
@@ -38,9 +81,38 @@
       z-index: 50;
       background-color: var(--parchment);
       border-bottom: 1px solid var(--divider);
+      height: var(--nav-height);
     }
 
-    .site-nav a {
+    .nav-inner {
+      max-width: 56rem;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      height: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-logo {
+      font-family: 'Crimson Pro', serif;
+      font-size: 1.05rem;
+      color: var(--charcoal);
+      font-weight: 600;
+      text-decoration: none;
+    }
+    .nav-logo:hover { color: var(--warm-brown); }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-links a {
       color: var(--charcoal-light);
       font-size: 0.8rem;
       letter-spacing: 0.1em;
@@ -48,19 +120,59 @@
       text-decoration: none;
       transition: color 0.2s;
     }
-    .site-nav a:hover { color: var(--charcoal); }
+    .nav-links a:hover { color: var(--charcoal); }
+
+    /* Hamburger */
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.25rem;
+      color: var(--charcoal);
+    }
+
+    /* Mobile nav drawer */
+    @media (max-width: 600px) {
+      .nav-toggle { display: flex; align-items: center; justify-content: center; }
+
+      .nav-links {
+        display: none;
+        position: fixed;
+        top: var(--nav-height);
+        left: 0;
+        right: 0;
+        background: var(--parchment);
+        border-bottom: 1px solid var(--divider);
+        flex-direction: column;
+        gap: 0;
+        padding: 0.5rem 0 1rem;
+        z-index: 49;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+      }
+
+      .nav-links.open { display: flex; }
+
+      .nav-links li { width: 100%; }
+
+      .nav-links a {
+        display: block;
+        padding: 0.75rem 1.5rem;
+        font-size: 0.85rem;
+      }
+    }
 
     /* Sections */
     section { border-top: 1px solid var(--divider); }
-    section:first-of-type { border-top: none; }
 
     .section-label {
       font-size: 0.7rem;
       letter-spacing: 0.15em;
       text-transform: uppercase;
-      color: var(--warm-brown);
+      color: var(--warm-brown-accessible);
       font-family: 'Montserrat', sans-serif;
       font-weight: 600;
+      margin: 0 0 1rem;
     }
 
     /* Cards */
@@ -71,35 +183,37 @@
       padding: 1.5rem;
     }
 
-    .card-coming-soon {
+    .card-badge {
       display: inline-block;
       font-size: 0.65rem;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--warm-brown);
+      border-radius: 3px;
+      padding: 0.2rem 0.5rem;
+      margin-bottom: 0.75rem;
+    }
+    .card-badge-pending {
+      color: var(--warm-brown-accessible);
       background: var(--parchment);
       border: 1px solid var(--warm-brown-light);
-      border-radius: 3px;
-      padding: 0.2rem 0.5rem;
-      margin-bottom: 0.5rem;
+    }
+    .card-badge-live {
+      color: #3d6b3d;
+      background: #eef5ee;
+      border: 1px solid #9ec49e;
     }
 
-    .card-live {
-      display: inline-block;
-      font-size: 0.65rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: #5a7a5a;
-      background: #eef5ee;
-      border: 1px solid #b8d4b8;
-      border-radius: 3px;
-      padding: 0.2rem 0.5rem;
-      margin-bottom: 0.5rem;
+    /* Mini cards inside build */
+    .mini-card {
+      padding: 1rem;
+      background: var(--parchment);
+      border-radius: 4px;
+      border: 1px solid var(--divider);
     }
 
     /* Links */
     .link-arrow {
-      color: var(--warm-brown);
+      color: var(--warm-brown-accessible);
       text-decoration: none;
       font-weight: 500;
       font-size: 0.9rem;
@@ -116,7 +230,7 @@
       color: var(--parchment);
       font-size: 0.85rem;
       letter-spacing: 0.05em;
-      padding: 0.6rem 1.4rem;
+      padding: 0.65rem 1.4rem;
       border-radius: 4px;
       text-decoration: none;
       transition: background 0.2s;
@@ -129,7 +243,7 @@
       color: var(--charcoal);
       font-size: 0.85rem;
       letter-spacing: 0.05em;
-      padding: 0.6rem 1.4rem;
+      padding: 0.65rem 1.4rem;
       border-radius: 4px;
       text-decoration: none;
       transition: all 0.2s;
@@ -139,11 +253,50 @@
       color: var(--parchment);
     }
 
-    /* Gurmukhi script styling */
+    /* Gurmukhi script */
     .gurmukhi {
       font-size: 1.3em;
       color: var(--warm-brown);
     }
+
+    /* Responsive helpers */
+    .grid-auto {
+      display: grid;
+      gap: 1.5rem;
+    }
+    .grid-auto-sm { gap: 1rem; }
+
+    @media (min-width: 480px) {
+      .grid-auto { grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); }
+      .grid-auto-sm { grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr)); }
+    }
+
+    .flex-wrap-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .teach-inner {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 1.5rem;
+    }
+    .teach-main { flex: 1; min-width: 0; }
+    .teach-sidebar { flex-shrink: 0; width: 100%; }
+
+    @media (min-width: 560px) {
+      .teach-sidebar { width: auto; min-width: 12rem; }
+    }
+
+    /* Section padding responsive */
+    .section-pad { padding: 3.5rem 0; }
+    @media (min-width: 640px) { .section-pad { padding: 5rem 0; } }
+
+    .hero-pad { padding: 5.5rem 0 3.5rem; }
+    @media (min-width: 640px) { .hero-pad { padding: 7rem 0 5rem; } }
 
     /* Footer */
     footer {
@@ -159,66 +312,83 @@
 </head>
 <body>
 
+  <!-- Skip to content -->
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
   <!-- Navigation -->
-  <nav class="site-nav">
-    <div style="max-width: 56rem; margin: 0 auto; padding: 1rem 1.5rem; display: flex; justify-content: space-between; align-items: center;">
-      <a href="index.html" style="font-family: 'Crimson Pro', serif; font-size: 1.05rem; color: var(--charcoal); font-weight: 600; text-decoration: none; text-transform: none; letter-spacing: normal;">Himmat Singh Khalsa</a>
-      <div style="display: flex; gap: 1.5rem; align-items: center; flex-wrap: wrap;">
-        <a href="#build">Build</a>
-        <a href="#teach">Teach</a>
-        <a href="#coach">Coach</a>
-        <a href="#about">About</a>
-        <a href="support.html">Support</a>
-      </div>
+  <nav class="site-nav" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">Himmat Singh Khalsa</a>
+
+      <button
+        class="nav-toggle"
+        aria-expanded="false"
+        aria-controls="nav-menu"
+        aria-label="Open navigation menu"
+      >
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true" focusable="false">
+          <rect y="4" width="22" height="2" rx="1" fill="currentColor"/>
+          <rect y="10" width="22" height="2" rx="1" fill="currentColor"/>
+          <rect y="16" width="22" height="2" rx="1" fill="currentColor"/>
+        </svg>
+      </button>
+
+      <ul class="nav-links" id="nav-menu" role="list">
+        <li><a href="#build">Build</a></li>
+        <li><a href="#teach">Teach</a></li>
+        <li><a href="#coach">Coach</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="support.html">Support</a></li>
+      </ul>
     </div>
   </nav>
 
-  <main style="max-width: 56rem; margin: 0 auto; padding: 0 1.5rem;">
+  <main id="main-content" style="max-width: 56rem; margin: 0 auto; padding: 0 1.5rem;">
 
     <!-- Hero -->
-    <section style="padding: 7rem 0 5rem; border-top: none;">
-      <h1 style="font-size: clamp(2.4rem, 5vw, 3.8rem); line-height: 1.15; margin-bottom: 1.25rem; color: var(--charcoal);">
+    <section class="hero-pad" aria-labelledby="hero-heading" style="border-top: none;">
+      <h1 id="hero-heading" style="font-size: clamp(2.4rem, 5vw, 3.8rem); line-height: 1.15; margin: 0 0 1.25rem; color: var(--charcoal);">
         Builder. Teacher. Coach.
       </h1>
-      <p style="font-size: 1.2rem; max-width: 38rem; color: var(--charcoal-light); line-height: 1.7; margin-bottom: 2.5rem;">
+      <p style="font-size: 1.15rem; max-width: 38rem; color: var(--charcoal-light); line-height: 1.7; margin: 0 0 2.5rem;">
         Twelve years in Amritsar gave me a deep connection to Panjab, its language,
         and the Gurmukhi script. Now I build tools for it and teach it.
       </p>
-      <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+      <div class="flex-wrap-row">
         <a href="#build" class="btn-primary">See the work</a>
         <a href="#about" class="btn-outline">About me</a>
       </div>
     </section>
 
     <!-- Three-node overview -->
-    <section style="padding: 4rem 0;">
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); gap: 1.5rem;">
+    <section class="section-pad" aria-label="Overview">
+      <div class="grid-auto">
 
-        <a href="#build" style="text-decoration: none;">
+        <a href="#build" style="text-decoration: none; display: block;">
           <div class="card" style="height: 100%;">
-            <p class="section-label" style="margin-bottom: 0.75rem;">Build</p>
-            <h3 style="font-size: 1.4rem; margin-bottom: 0.5rem; color: var(--charcoal);">Gurmukhi Tools Suite</h3>
-            <p style="font-size: 0.9rem; color: var(--charcoal-light); line-height: 1.6;">
+            <p class="section-label">Build</p>
+            <h2 style="font-size: 1.4rem; margin: 0 0 0.5rem; color: var(--charcoal);">Gurmukhi Tools Suite</h2>
+            <p style="font-size: 0.9rem; color: var(--charcoal-light); line-height: 1.6; margin: 0;">
               A suite of tools for searching, studying, and understanding Gurbani. Voice-driven and AI-assisted. In development.
             </p>
           </div>
         </a>
 
-        <a href="#teach" style="text-decoration: none;">
+        <a href="#teach" style="text-decoration: none; display: block;">
           <div class="card" style="height: 100%;">
-            <p class="section-label" style="margin-bottom: 0.75rem;">Teach</p>
-            <h3 style="font-size: 1.4rem; margin-bottom: 0.5rem; color: var(--charcoal);">atthebunga.com</h3>
-            <p style="font-size: 0.9rem; color: var(--charcoal-light); line-height: 1.6;">
+            <p class="section-label">Teach</p>
+            <h2 style="font-size: 1.4rem; margin: 0 0 0.5rem; color: var(--charcoal);">atthebunga.com</h2>
+            <p style="font-size: 0.9rem; color: var(--charcoal-light); line-height: 1.6; margin: 0;">
               Online Gurmukhi classes for English speakers. Group courses and individual sessions, open for booking.
             </p>
           </div>
         </a>
 
-        <a href="#coach" style="text-decoration: none;">
+        <a href="#coach" style="text-decoration: none; display: block;">
           <div class="card" style="height: 100%;">
-            <p class="section-label" style="margin-bottom: 0.75rem;">Coach</p>
-            <h3 style="font-size: 1.4rem; margin-bottom: 0.5rem; color: var(--charcoal);">Himmat Coaching</h3>
-            <p style="font-size: 0.9rem; color: var(--charcoal-light); line-height: 1.6;">
+            <p class="section-label">Coach</p>
+            <h2 style="font-size: 1.4rem; margin: 0 0 0.5rem; color: var(--charcoal);">Himmat Coaching</h2>
+            <p style="font-size: 0.9rem; color: var(--charcoal-light); line-height: 1.6; margin: 0;">
               Parent coaching rooted in Simplicity Parenting. For families who want calm, clarity, and a steadier home.
             </p>
           </div>
@@ -229,112 +399,122 @@
 
 
     <!-- BUILD -->
-    <section id="build" style="padding: 5rem 0;">
-      <p class="section-label" style="margin-bottom: 1rem;">Build</p>
-      <h2 style="font-size: clamp(2rem, 4vw, 2.8rem); margin-bottom: 1rem; color: var(--charcoal);">
-        Software & tools
+    <section id="build" class="section-pad" aria-labelledby="build-heading">
+      <p class="section-label">Build</p>
+      <h2 id="build-heading" style="font-size: clamp(2rem, 4vw, 2.8rem); margin: 0 0 1rem; color: var(--charcoal);">
+        Software &amp; tools
       </h2>
-      <p style="font-size: 1.05rem; color: var(--charcoal-light); max-width: 36rem; line-height: 1.7; margin-bottom: 3rem;">
-        I work at the intersection of language and technology — building tools
+      <p style="font-size: 1.05rem; color: var(--charcoal-light); max-width: 36rem; line-height: 1.7; margin: 0 0 3rem;">
+        I work at the intersection of language and technology, building tools
         that make Sikh scripture more accessible through search, voice, and
         scholarly analysis.
       </p>
 
       <!-- Gurmukhi Suite — featured -->
       <div class="card" style="margin-bottom: 2rem;">
-        <span class="card-coming-soon">In development</span>
-        <h3 style="font-size: 1.6rem; margin-bottom: 0.5rem; color: var(--charcoal);">
-          Gurmukhi Tools Suite <span class="gurmukhi">ਗੁਰਮੁਖੀ</span>
+        <span class="card-badge card-badge-pending">In development</span>
+        <h3 style="font-size: 1.6rem; margin: 0 0 0.5rem; color: var(--charcoal);">
+          Gurmukhi Tools Suite <span class="gurmukhi" aria-label="Gurmukhi">ਗੁਰਮੁਖੀ</span>
         </h3>
-        <p style="color: var(--charcoal-light); line-height: 1.7; margin-bottom: 1.5rem; font-size: 0.95rem;">
-          A set of interconnected applications for engaging with Gurbani — the sacred poetry of the Sikh Gurus.
+        <p style="color: var(--charcoal-light); line-height: 1.7; margin: 0 0 1.5rem; font-size: 0.95rem;">
+          A set of interconnected applications for engaging with Gurbani, the sacred poetry of the Sikh Gurus.
           Built on a shared database with AI-powered voice search and a comprehensive word-by-word dictionary.
         </p>
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr)); gap: 1rem; margin-bottom: 1.5rem;">
-          <div style="padding: 1rem; background: var(--parchment); border-radius: 4px; border: 1px solid var(--divider);">
-            <p style="font-weight: 600; font-size: 0.9rem; margin-bottom: 0.4rem; color: var(--charcoal);">Gurbani Search</p>
-            <p style="font-size: 0.83rem; color: var(--charcoal-light); line-height: 1.5;">Multi-mode search across scripture: substring, first-letter, regex, and phonetic pattern matching.</p>
+        <div class="grid-auto grid-auto-sm" style="margin-bottom: 1.5rem;">
+          <div class="mini-card">
+            <p style="font-weight: 600; font-size: 0.9rem; margin: 0 0 0.4rem; color: var(--charcoal);">Gurbani Search</p>
+            <p style="font-size: 0.83rem; color: var(--charcoal-light); line-height: 1.5; margin: 0;">Multi-mode search across scripture: substring, first-letter, regex, and phonetic pattern matching.</p>
           </div>
-          <div style="padding: 1rem; background: var(--parchment); border-radius: 4px; border: 1px solid var(--divider);">
-            <p style="font-weight: 600; font-size: 0.9rem; margin-bottom: 0.4rem; color: var(--charcoal);">Gurmukhi Kosh</p>
-            <p style="font-size: 0.83rem; color: var(--charcoal-light); line-height: 1.5;">A dictionary of every word in the Guru Granth Sahib — with grammar, etymology, and every occurrence in scripture.</p>
+          <div class="mini-card">
+            <p style="font-weight: 600; font-size: 0.9rem; margin: 0 0 0.4rem; color: var(--charcoal);">Gurmukhi Kosh</p>
+            <p style="font-size: 0.83rem; color: var(--charcoal-light); line-height: 1.5; margin: 0;">A dictionary of every word in the Guru Granth Sahib, with grammar, etymology, and every occurrence in scripture.</p>
           </div>
-          <div style="padding: 1rem; background: var(--parchment); border-radius: 4px; border: 1px solid var(--divider);">
-            <p style="font-weight: 600; font-size: 0.9rem; margin-bottom: 0.4rem; color: var(--charcoal);">Voice Search</p>
-            <p style="font-size: 0.83rem; color: var(--charcoal-light); line-height: 1.5;">AI-powered speech recognition for Gurmukhi — say a line and find it. Uses wav2vec2 and semantic similarity.</p>
+          <div class="mini-card">
+            <p style="font-weight: 600; font-size: 0.9rem; margin: 0 0 0.4rem; color: var(--charcoal);">Voice Search</p>
+            <p style="font-size: 0.83rem; color: var(--charcoal-light); line-height: 1.5; margin: 0;">AI-powered speech recognition for Gurmukhi. Say a line and find it. Uses wav2vec2 and semantic similarity.</p>
           </div>
         </div>
-        <a href="https://github.com/thehimmat" target="_blank" class="link-arrow">View on GitHub →</a>
+        <a href="https://github.com/thehimmat" target="_blank" rel="noopener noreferrer" class="link-arrow" aria-label="View Gurmukhi Tools Suite on GitHub (opens in new tab)">
+          View on GitHub
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true" focusable="false" style="margin-left: 2px;">
+            <path d="M2.5 9.5L9.5 2.5M9.5 2.5H4.5M9.5 2.5V7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
       </div>
 
       <!-- Secondary work -->
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); gap: 1rem; margin-bottom: 2rem;">
+      <div class="grid-auto" style="gap: 1rem; margin-bottom: 2rem;">
 
         <div class="card">
-          <span class="card-coming-soon">In progress</span>
-          <h3 style="font-size: 1.2rem; margin-bottom: 0.4rem; color: var(--charcoal);">Gurbani Diff</h3>
-          <p style="font-size: 0.85rem; color: var(--charcoal-light); line-height: 1.6; margin-bottom: 0.75rem;">
+          <span class="card-badge card-badge-pending">In progress</span>
+          <h3 style="font-size: 1.2rem; margin: 0 0 0.4rem; color: var(--charcoal);">Gurbani Diff</h3>
+          <p style="font-size: 0.85rem; color: var(--charcoal-light); line-height: 1.6; margin: 0;">
             Side-by-side comparison of Gurbani text variants across digitization sources. For scholars and editors.
           </p>
         </div>
 
         <div class="card">
-          <span class="card-live">Live</span>
-          <h3 style="font-size: 1.2rem; margin-bottom: 0.4rem; color: var(--charcoal);">PIR Sound Tracker</h3>
-          <p style="font-size: 0.85rem; color: var(--charcoal-light); line-height: 1.6; margin-bottom: 0.75rem;">
+          <span class="card-badge card-badge-live">Live</span>
+          <h3 style="font-size: 1.2rem; margin: 0 0 0.4rem; color: var(--charcoal);">PIR Sound Tracker</h3>
+          <p style="font-size: 0.85rem; color: var(--charcoal-light); line-height: 1.6; margin: 0 0 0.75rem;">
             Real-time noise monitoring for Portland International Raceway. OCR, Supabase, live dashboard.
           </p>
-          <a href="https://pir-sound-tracker.vercel.app" target="_blank" class="link-arrow" style="font-size: 0.83rem;">View live →</a>
+          <a href="https://pir-sound-tracker.vercel.app" target="_blank" rel="noopener noreferrer" class="link-arrow" style="font-size: 0.83rem;" aria-label="View PIR Sound Tracker live (opens in new tab)">
+            View live
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true" focusable="false" style="margin-left: 2px;">
+              <path d="M2.5 9.5L9.5 2.5M9.5 2.5H4.5M9.5 2.5V7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
         </div>
 
       </div>
 
       <div style="padding: 1.25rem; background: var(--parchment-dark); border-radius: 4px; border: 1px solid var(--divider);">
-        <p style="font-size: 0.85rem; color: var(--charcoal-light);">
-          Prior: Software Engineer at <strong style="color: var(--charcoal);">Alkami Technology</strong> — digital banking for 18M+ users.
-          <a href="#about" style="color: var(--warm-brown); text-decoration: none;">More in About →</a>
+        <p style="font-size: 0.85rem; color: var(--charcoal-light); margin: 0;">
+          Prior: Software Engineer at <strong style="color: var(--charcoal);">Alkami Technology</strong>, digital banking for 18M+ users.
+          <a href="#about" style="color: var(--warm-brown-accessible); text-decoration: none; font-weight: 500;">More in About</a>
         </p>
       </div>
     </section>
 
 
     <!-- TEACH -->
-    <section id="teach" style="padding: 5rem 0;">
-      <p class="section-label" style="margin-bottom: 1rem;">Teach</p>
-      <h2 style="font-size: clamp(2rem, 4vw, 2.8rem); margin-bottom: 1rem; color: var(--charcoal);">
+    <section id="teach" class="section-pad" aria-labelledby="teach-heading">
+      <p class="section-label">Teach</p>
+      <h2 id="teach-heading" style="font-size: clamp(2rem, 4vw, 2.8rem); margin: 0 0 1rem; color: var(--charcoal);">
         Gurmukhi teaching
       </h2>
-      <p style="font-size: 1.05rem; color: var(--charcoal-light); max-width: 36rem; line-height: 1.7; margin-bottom: 3rem;">
+      <p style="font-size: 1.05rem; color: var(--charcoal-light); max-width: 36rem; line-height: 1.7; margin: 0 0 3rem;">
         I've been teaching Gurmukhi online since 2020, especially for English
         speakers who didn't grow up with Punjabi at home. The tools I'm building
         are the technical layer of the same work.
       </p>
 
       <div class="card" style="margin-bottom: 2rem;">
-        <span class="card-live">Live · Open for booking</span>
-        <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; gap: 1.5rem;">
-          <div style="flex: 1; min-width: 16rem;">
-            <h3 style="font-size: 1.8rem; margin-bottom: 0.75rem; color: var(--charcoal);">
-              At the Bunga <span class="gurmukhi" style="font-size: 1em;">ਬੁੰਗਾ</span>
+        <span class="card-badge card-badge-live">Live — Open for booking</span>
+        <div class="teach-inner">
+          <div class="teach-main">
+            <h3 style="font-size: 1.8rem; margin: 0 0 0.75rem; color: var(--charcoal);">
+              At the Bunga <span class="gurmukhi" aria-label="Bunga in Gurmukhi script" style="font-size: 1em;">ਬੁੰਗਾ</span>
             </h3>
-            <p style="color: var(--charcoal-light); line-height: 1.7; font-size: 0.95rem; margin-bottom: 1rem;">
+            <p style="color: var(--charcoal-light); line-height: 1.7; font-size: 0.95rem; margin: 0 0 1rem;">
               Online Gurmukhi instruction with a focus on accurate pronunciation (santhiya),
               the living meaning of the script, and direct connection with Gurbani.
               Classes for all levels, from learning the alphabet to studying
               Japuji Sahib word by word.
             </p>
-            <p style="font-style: italic; font-family: 'Crimson Pro', serif; font-size: 1.05rem; color: var(--charcoal-light); margin-bottom: 1.25rem;">
+            <p style="font-style: italic; font-family: 'Crimson Pro', serif; font-size: 1.05rem; color: var(--charcoal-light); margin: 0 0 1.25rem;">
               "Where Sound Meets Meaning"
             </p>
-            <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
-              <a href="https://atthebunga.com" target="_blank" class="btn-primary">Visit atthebunga.com</a>
-              <a href="https://cal.com/atthebunga" target="_blank" class="btn-outline">Book a class</a>
+            <div class="flex-wrap-row">
+              <a href="https://atthebunga.com" target="_blank" rel="noopener noreferrer" class="btn-primary" aria-label="Visit atthebunga.com (opens in new tab)">Visit atthebunga.com</a>
+              <a href="https://cal.com/atthebunga" target="_blank" rel="noopener noreferrer" class="btn-outline" aria-label="Book a Gurmukhi class (opens in new tab)">Book a class</a>
             </div>
           </div>
-          <div style="flex-shrink: 0;">
-            <div style="border: 1px solid var(--divider); border-radius: 4px; padding: 1rem; background: var(--parchment); min-width: 12rem;">
-              <p style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--warm-brown); margin-bottom: 0.75rem; font-weight: 600;">Classes offered</p>
-              <ul style="font-size: 0.85rem; color: var(--charcoal-light); line-height: 2; list-style: none; padding: 0; margin: 0;">
+          <div class="teach-sidebar">
+            <div style="border: 1px solid var(--divider); border-radius: 4px; padding: 1rem; background: var(--parchment);">
+              <p style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--warm-brown-accessible); margin: 0 0 0.75rem; font-weight: 600;">Classes offered</p>
+              <ul style="font-size: 0.85rem; color: var(--charcoal-light); line-height: 2; list-style: none; padding: 0; margin: 0;" role="list">
                 <li>Gurmukhi Script &amp; Sound</li>
                 <li>Japuji Sahib</li>
                 <li>Gurbani Deep Dive</li>
@@ -346,7 +526,7 @@
         </div>
       </div>
 
-      <p style="font-size: 0.88rem; color: var(--charcoal-light); line-height: 1.7; max-width: 38rem;">
+      <p style="font-size: 0.88rem; color: var(--charcoal-light); line-height: 1.7; max-width: 38rem; margin: 0;">
         The Bungas were historic learning centers at the Golden Temple, open to
         all and devoted to scholarship and practice. That spirit is what atthebunga.com
         is trying to carry forward.
@@ -355,98 +535,127 @@
 
 
     <!-- COACH -->
-    <section id="coach" style="padding: 5rem 0;">
-      <p class="section-label" style="margin-bottom: 1rem;">Coach</p>
-      <h2 style="font-size: clamp(2rem, 4vw, 2.8rem); margin-bottom: 1rem; color: var(--charcoal);">
+    <section id="coach" class="section-pad" aria-labelledby="coach-heading">
+      <p class="section-label">Coach</p>
+      <h2 id="coach-heading" style="font-size: clamp(2rem, 4vw, 2.8rem); margin: 0 0 1rem; color: var(--charcoal);">
         Parent coaching
       </h2>
-      <p style="font-size: 1.05rem; color: var(--charcoal-light); max-width: 36rem; line-height: 1.7; margin-bottom: 3rem;">
+      <p style="font-size: 1.05rem; color: var(--charcoal-light); max-width: 36rem; line-height: 1.7; margin: 0 0 3rem;">
         Six years as a residential counselor taught me that children thrive when life
         is not rushed. I'm a certified Simplicity Parenting coach, working with
         families who want calm, clarity, and a steadier home.
       </p>
 
       <div class="card">
-        <span class="card-live">Live · Portland + Remote</span>
-        <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; gap: 1.5rem;">
-          <div style="flex: 1; min-width: 16rem;">
-            <h3 style="font-size: 1.8rem; margin-bottom: 0.75rem; color: var(--charcoal);">Himmat Coaching</h3>
-            <p style="font-style: italic; font-family: 'Crimson Pro', serif; font-size: 1.05rem; color: var(--charcoal-light); margin-bottom: 0.75rem;">
-              "Simplicity, Rhythm, Connection"
-            </p>
-            <p style="color: var(--charcoal-light); line-height: 1.7; font-size: 0.95rem; margin-bottom: 1.25rem;">
-              Parent coaching for families who want calm, clarity, and confidence
-              in their home. Rooted in the Simplicity Parenting framework, grounded
-              in research and focused on reducing overwhelm and building real connection.
-            </p>
-            <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
-              <a href="https://himmatcoaching.com" target="_blank" class="btn-primary">Visit himmatcoaching.com</a>
-              <a href="https://cal.com/himmat" target="_blank" class="btn-outline">Free intro call</a>
-            </div>
-          </div>
+        <span class="card-badge card-badge-live">Live — Portland + Remote</span>
+        <h3 style="font-size: 1.8rem; margin: 0 0 0.75rem; color: var(--charcoal);">Himmat Coaching</h3>
+        <p style="font-style: italic; font-family: 'Crimson Pro', serif; font-size: 1.05rem; color: var(--charcoal-light); margin: 0 0 0.75rem;">
+          "Simplicity, Rhythm, Connection"
+        </p>
+        <p style="color: var(--charcoal-light); line-height: 1.7; font-size: 0.95rem; margin: 0 0 1.25rem; max-width: 36rem;">
+          Parent coaching for families who want calm, clarity, and confidence
+          in their home. Rooted in the Simplicity Parenting framework, grounded
+          in research and focused on reducing overwhelm and building real connection.
+        </p>
+        <div class="flex-wrap-row">
+          <a href="https://himmatcoaching.com" target="_blank" rel="noopener noreferrer" class="btn-primary" aria-label="Visit himmatcoaching.com (opens in new tab)">Visit himmatcoaching.com</a>
+          <a href="https://cal.com/himmat" target="_blank" rel="noopener noreferrer" class="btn-outline" aria-label="Book a free intro coaching call (opens in new tab)">Free intro call</a>
         </div>
       </div>
     </section>
 
 
     <!-- ABOUT -->
-    <section id="about" style="padding: 5rem 0;">
-      <p class="section-label" style="margin-bottom: 1rem;">About</p>
-      <h2 style="font-size: clamp(2rem, 4vw, 2.8rem); margin-bottom: 2rem; color: var(--charcoal);">
+    <section id="about" class="section-pad" aria-labelledby="about-heading">
+      <p class="section-label">About</p>
+      <h2 id="about-heading" style="font-size: clamp(2rem, 4vw, 2.8rem); margin: 0 0 2rem; color: var(--charcoal);">
         Himmat Singh Khalsa
       </h2>
 
-      <div style="display: grid; grid-template-columns: 1fr; gap: 1.25rem; max-width: 42rem; font-size: 1rem; color: var(--charcoal-light); line-height: 1.8;">
-        <p>
+      <div style="display: grid; gap: 1.25rem; max-width: 42rem; font-size: 1rem; color: var(--charcoal-light); line-height: 1.8;">
+        <p style="margin: 0;">
           I grew up in the Sikh tradition and spent twelve years living in Amritsar,
           in Panjab, close to Sri Harimandir Sahib, the Golden Temple. I loved
           experiencing Panjabi and Sikh culture through exploring ancient alleyways,
-          historic spiritual sites and of course the cuisine — langar, dhabas and
+          historic spiritual sites and of course the cuisine: langar, dhabas and
           street food. That proximity gave me a deep respect and connection to
-          Panjab as a place, Panjabi as its language and Gurmukhi — the script used
+          Panjab as a place, Panjabi as its language and Gurmukhi, the script used
           to read and write the language. It was created as a system to be learned
           by all, regardless of social status, cultural background or age. While
           learning, I found a passion for understanding and breaking down the
           precision of the script and the depth of what it has been used to write.
         </p>
-        <p>
+        <p style="margin: 0;">
           When I started learning to code, I knew immediately that this is what I
           wanted to build. It took a while, but now I'm doing it.
         </p>
-        <p>
-          The teaching and the tools feed each other — every class I teach shows me
+        <p style="margin: 0;">
+          The teaching and the tools feed each other. Every class I teach shows me
           what's missing, and every tool I build makes the teaching better.
         </p>
-        <p>
+        <p style="margin: 0;">
           I live in Portland, Oregon with my family.
         </p>
       </div>
 
       <div style="margin-top: 2.5rem; padding-top: 2rem; border-top: 1px solid var(--divider); display: flex; gap: 1.5rem; flex-wrap: wrap; align-items: center;">
-        <a href="https://github.com/thehimmat" target="_blank" class="link-arrow">GitHub →</a>
-        <a href="mailto:himmatsinghkhalsa@gmail.com" class="link-arrow">Email →</a>
-        <a href="work-with-me.html" class="link-arrow">Work with me →</a>
-        <a href="support.html" class="link-arrow">Support this work →</a>
+        <a href="https://github.com/thehimmat" target="_blank" rel="noopener noreferrer" class="link-arrow" aria-label="View GitHub profile (opens in new tab)">GitHub</a>
+        <a href="mailto:himmatsinghkhalsa@gmail.com" class="link-arrow">Email</a>
+        <a href="work-with-me.html" class="link-arrow">Work with me</a>
+        <a href="support.html" class="link-arrow">Support this work</a>
       </div>
     </section>
 
   </main>
 
-  <!-- Footer -->
-  <footer style="margin-top: 4rem; padding: 2.5rem 1.5rem; text-align: center;">
+  <footer style="margin-top: 4rem; padding: 2.5rem 1.5rem; text-align: center;" role="contentinfo">
     <div style="max-width: 56rem; margin: 0 auto;">
-      <p style="font-size: 0.82rem; margin-bottom: 0.5rem;">
-        <a href="https://atthebunga.com" target="_blank">atthebunga.com</a>
-        &nbsp;·&nbsp;
-        <a href="https://himmatcoaching.com" target="_blank">himmatcoaching.com</a>
-        &nbsp;·&nbsp;
-        <a href="https://github.com/thehimmat" target="_blank">GitHub</a>
-        &nbsp;·&nbsp;
-        <a href="support.html">Support</a>
+      <nav aria-label="Footer navigation">
+        <p style="font-size: 0.82rem; margin: 0 0 0.5rem;">
+          <a href="https://atthebunga.com" target="_blank" rel="noopener noreferrer" aria-label="Visit atthebunga.com (opens in new tab)">atthebunga.com</a>
+          <span aria-hidden="true">&nbsp;·&nbsp;</span>
+          <a href="https://himmatcoaching.com" target="_blank" rel="noopener noreferrer" aria-label="Visit himmatcoaching.com (opens in new tab)">himmatcoaching.com</a>
+          <span aria-hidden="true">&nbsp;·&nbsp;</span>
+          <a href="https://github.com/thehimmat" target="_blank" rel="noopener noreferrer" aria-label="View GitHub profile (opens in new tab)">GitHub</a>
+          <span aria-hidden="true">&nbsp;·&nbsp;</span>
+          <a href="support.html">Support</a>
+        </p>
+      </nav>
+      <p style="font-size: 0.78rem; color: var(--warm-brown-light); margin: 0.5rem 0 0;">
+        <small>&copy; 2025 Himmat Singh Khalsa</small>
       </p>
-      <p style="font-size: 0.78rem; color: var(--warm-brown-light); margin-top: 0.5rem;">© 2025 Himmat Singh Khalsa</p>
     </div>
   </footer>
+
+  <script>
+    // Hamburger menu toggle
+    const toggle = document.querySelector('.nav-toggle');
+    const menu = document.getElementById('nav-menu');
+
+    toggle.addEventListener('click', function () {
+      const isOpen = menu.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', isOpen);
+      toggle.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
+    });
+
+    // Close menu when a link is clicked
+    menu.querySelectorAll('a').forEach(function (link) {
+      link.addEventListener('click', function () {
+        menu.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.setAttribute('aria-label', 'Open navigation menu');
+      });
+    });
+
+    // Close menu on outside click
+    document.addEventListener('click', function (e) {
+      if (!toggle.contains(e.target) && !menu.contains(e.target)) {
+        menu.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.setAttribute('aria-label', 'Open navigation menu');
+      }
+    });
+  </script>
 
 </body>
 </html>
