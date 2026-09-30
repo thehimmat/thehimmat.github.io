@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Himmat Singh Khalsa — builder, teacher, and coach. Gurmukhi tools, online Gurmukhi classes at atthebunga.com, and parent coaching at himmatcoaching.com.">
+  <meta name="description" content="Himmat Singh Khalsa — software engineer. Local-first document AI, Gurmukhi and Gurbani apps, and online Gurmukhi classes at atthebunga.com.">
   <title>Himmat Singh Khalsa</title>
   <link href="./output.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
@@ -336,8 +336,8 @@
       <ul class="nav-links" id="nav-menu" role="list">
         <li><a href="#build">Build</a></li>
         <li><a href="#teach">Teach</a></li>
-        <li><a href="#coach">Coach</a></li>
         <li><a href="#about">About</a></li>
+        <li><a href="work-with-me.html">Work with me</a></li>
         <li><a href="support.html">Support</a></li>
       </ul>
     </div>
@@ -351,8 +351,9 @@
         Builder. Teacher. Learner.
       </h1>
       <p style="font-size: 1.15rem; max-width: 38rem; color: var(--charcoal-light); line-height: 1.7; margin: 0 0 2.5rem;">
-        I'm a software engineer who teaches Gurmukhi and builds tools for learners,
-        the Sikh community, and anyone drawn to the language.
+        I'm a software engineer building local-first AI tools and a suite of apps
+        that make Gurbani searchable, readable, and pronounceable. I also teach
+        Gurmukhi online at atthebunga.com.
       </p>
       <div class="flex-wrap-row">
         <a href="#build" class="btn-primary">See the work</a>
@@ -367,61 +368,112 @@
         Software &amp; tools
       </h2>
       <p style="font-size: 1.05rem; color: var(--charcoal-light); max-width: 36rem; line-height: 1.7; margin: 0 0 3rem;">
-        I work at the intersection of language and technology, building tools
-        that make Sikh scripture more accessible through search, voice, and
-        scholarly analysis.
+        Two active projects: a local-first desktop assistant for the paperwork
+        you've been avoiding, and a suite of apps built alongside the Gurmukhi I
+        teach. Both are TypeScript, both are built test-first, and both started
+        from a problem I actually had and couldn't solve with anything that
+        already existed.
       </p>
+
+      <!-- Outtray — featured -->
+      <div class="card" style="margin-bottom: 2rem;">
+        <span class="card-badge card-badge-pending">In development</span>
+        <h3 style="font-size: 1.6rem; margin: 0 0 0.5rem; color: var(--charcoal);">
+          Outtray
+        </h3>
+        <p style="font-style: italic; font-family: 'Crimson Pro', serif; font-size: 1.05rem; color: var(--charcoal-light); margin: 0 0 1rem;">
+          "Point it at the pile. Get an action list."
+        </p>
+        <p style="color: var(--charcoal-light); line-height: 1.7; margin: 0 0 1rem; font-size: 0.95rem;">
+          A local-first desktop assistant for the documents you've been meaning to
+          deal with — scans, PDFs, exported email. Point it at a folder of unsorted
+          mess and it returns the short list that actually needs you: what to respond
+          to, what expires when, what to keep or shred, and what looks like phishing.
+          Every item shows its reasoning, a verbatim snippet, and a link to the exact
+          source page. Nothing acts without your approval.
+        </p>
+        <p style="color: var(--charcoal-light); line-height: 1.7; margin: 0 0 1.25rem; font-size: 0.95rem;">
+          All inference runs on your machine; no document content leaves it. Built on
+          a typed extraction core with per-field confidence and a labeled eval set
+          that serves as the test suite. TypeScript, Tauri v2, encrypted SQLite, and
+          local models via Ollama.
+        </p>
+        <div class="flex-wrap-row" style="align-items: center;">
+          <a href="https://github.com/thehimmat/outtray" target="_blank" rel="noopener noreferrer" class="btn-outline" aria-label="View Outtray on GitHub (opens in new tab)">View on GitHub</a>
+          <span style="font-size: 0.83rem; color: var(--charcoal-light);">Phase 1 of 6 — extraction core and eval harness</span>
+        </div>
+      </div>
 
       <!-- Gurmukhi Suite — featured -->
       <div class="card" style="margin-bottom: 2rem;">
-        <span class="card-badge card-badge-pending">In development</span>
+        <span class="card-badge card-badge-live">Live</span>
         <h3 style="font-size: 1.6rem; margin: 0 0 0.5rem; color: var(--charcoal);">
           Gurmukhi Tools Suite <span class="gurmukhi" aria-label="Gurmukhi">ਗੁਰਮੁਖੀ</span>
         </h3>
         <p style="color: var(--charcoal-light); line-height: 1.7; margin: 0 0 1.5rem; font-size: 0.95rem;">
-          A set of interconnected applications for engaging with Gurbani, the sacred poetry of the Sikh Gurus.
-          Built on a shared database with AI-powered voice search and a comprehensive word-by-word dictionary.
+          A set of connected apps for reading, searching, and studying Gurbani, built
+          on a shared database. Free, and built alongside the classes I teach.
         </p>
         <div class="grid-auto grid-auto-sm">
           <div class="mini-card">
-            <p style="font-weight: 600; font-size: 0.9rem; margin: 0 0 0.4rem; color: var(--charcoal);">Gurbani Search</p>
-            <p style="font-size: 0.83rem; color: var(--charcoal-light); line-height: 1.5; margin: 0 0 0.6rem;">Multi-mode search across scripture: substring, first-letter, regex, and phonetic pattern matching.</p>
-            <a href="https://github.com/thehimmat/gurmukhi-search" target="_blank" rel="noopener noreferrer" class="link-arrow" style="font-size: 0.78rem;" aria-label="View Gurbani Search on GitHub (opens in new tab)">
-              GitHub
-              <svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true" focusable="false" style="margin-left: 2px;">
-                <path d="M2.5 9.5L9.5 2.5M9.5 2.5H4.5M9.5 2.5V7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </a>
-          </div>
-          <div class="mini-card">
-            <p style="font-weight: 600; font-size: 0.9rem; margin: 0 0 0.4rem; color: var(--charcoal);">Gurmukhi Kosh</p>
-            <p style="font-size: 0.83rem; color: var(--charcoal-light); line-height: 1.5; margin: 0 0 0.6rem;">A dictionary of every word in the Guru Granth Sahib, with grammar, etymology, and every occurrence in scripture.</p>
-            <a href="https://github.com/thehimmat/gurmukhi-kosh" target="_blank" rel="noopener noreferrer" class="link-arrow" style="font-size: 0.78rem;" aria-label="View Gurmukhi Kosh on GitHub (opens in new tab)">
-              GitHub
-              <svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true" focusable="false" style="margin-left: 2px;">
-                <path d="M2.5 9.5L9.5 2.5M9.5 2.5H4.5M9.5 2.5V7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </a>
-          </div>
-          <div class="mini-card">
-            <p style="font-weight: 600; font-size: 0.9rem; margin: 0 0 0.4rem; color: var(--charcoal);">Voice Search</p>
-            <p style="font-size: 0.83rem; color: var(--charcoal-light); line-height: 1.5; margin: 0 0 0.6rem;">AI-powered speech recognition for Gurmukhi. Say a line and find it. Uses wav2vec2 and semantic similarity.</p>
-            <a href="https://github.com/thehimmat/gurmukhi-voice-search" target="_blank" rel="noopener noreferrer" class="link-arrow" style="font-size: 0.78rem;" aria-label="View Voice Search on GitHub (opens in new tab)">
-              GitHub
-              <svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true" focusable="false" style="margin-left: 2px;">
-                <path d="M2.5 9.5L9.5 2.5M9.5 2.5H4.5M9.5 2.5V7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </a>
+            <p style="font-weight: 600; font-size: 0.9rem; margin: 0 0 0.4rem; color: var(--charcoal);">Gurbani Search &amp; Kosh</p>
+            <p style="font-size: 0.83rem; color: var(--charcoal-light); line-height: 1.5; margin: 0 0 0.6rem;">Search all 1430 angs by substring, first letter, regex, or phonetic pattern — and look up any word: definition, etymology, grammar, and every occurrence in SGGS.</p>
+            <span style="display: inline-flex; gap: 1rem; flex-wrap: wrap;">
+              <a href="https://search.atthebunga.com" target="_blank" rel="noopener noreferrer" class="link-arrow" style="font-size: 0.78rem;" aria-label="Open Gurbani Search and Kosh (opens in new tab)">
+                Open app
+                <svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true" focusable="false" style="margin-left: 2px;">
+                  <path d="M2.5 9.5L9.5 2.5M9.5 2.5H4.5M9.5 2.5V7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </a>
+              <a href="https://github.com/thehimmat/gurmukhi-search" target="_blank" rel="noopener noreferrer" class="link-arrow" style="font-size: 0.78rem;" aria-label="View Gurbani Search on GitHub (opens in new tab)">
+                Search repo
+                <svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true" focusable="false" style="margin-left: 2px;">
+                  <path d="M2.5 9.5L9.5 2.5M9.5 2.5H4.5M9.5 2.5V7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </a>
+              <a href="https://github.com/thehimmat/gurmukhi-kosh" target="_blank" rel="noopener noreferrer" class="link-arrow" style="font-size: 0.78rem;" aria-label="View Gurmukhi Kosh on GitHub (opens in new tab)">
+                Kosh repo
+                <svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true" focusable="false" style="margin-left: 2px;">
+                  <path d="M2.5 9.5L9.5 2.5M9.5 2.5H4.5M9.5 2.5V7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </a>
+            </span>
           </div>
           <div class="mini-card">
             <p style="font-weight: 600; font-size: 0.9rem; margin: 0 0 0.4rem; color: var(--charcoal);">Gurmukhi Transliterator</p>
             <p style="font-size: 0.83rem; color: var(--charcoal-light); line-height: 1.5; margin: 0 0 0.6rem;">Gurmukhi to Latin transliteration: ISO 15919, a readable practical scheme, and legacy font conversion.</p>
-            <a href="https://github.com/thehimmat/gurmukhi-transliterate" target="_blank" rel="noopener noreferrer" class="link-arrow" style="font-size: 0.78rem;" aria-label="View Gurmukhi Transliterator on GitHub (opens in new tab)">
-              GitHub
-              <svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true" focusable="false" style="margin-left: 2px;">
-                <path d="M2.5 9.5L9.5 2.5M9.5 2.5H4.5M9.5 2.5V7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </a>
+            <span style="display: inline-flex; gap: 1rem; flex-wrap: wrap;">
+              <a href="https://transliterate.atthebunga.com" target="_blank" rel="noopener noreferrer" class="link-arrow" style="font-size: 0.78rem;" aria-label="Open Gurmukhi Transliterator (opens in new tab)">
+                Open app
+                <svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true" focusable="false" style="margin-left: 2px;">
+                  <path d="M2.5 9.5L9.5 2.5M9.5 2.5H4.5M9.5 2.5V7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </a>
+              <a href="https://github.com/thehimmat/gurmukhi-transliterate" target="_blank" rel="noopener noreferrer" class="link-arrow" style="font-size: 0.78rem;" aria-label="View Gurmukhi Transliterator on GitHub (opens in new tab)">
+                GitHub
+                <svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true" focusable="false" style="margin-left: 2px;">
+                  <path d="M2.5 9.5L9.5 2.5M9.5 2.5H4.5M9.5 2.5V7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </a>
+            </span>
+          </div>
+          <div class="mini-card">
+            <p style="font-weight: 600; font-size: 0.9rem; margin: 0 0 0.4rem; color: var(--charcoal);">Gurbani Radio</p>
+            <p style="font-size: 0.83rem; color: var(--charcoal-light); line-height: 1.5; margin: 0 0 0.6rem;">Live Gurbani kirtan from Sri Harimandir Sahib: listen in the browser, or cast it to a Google Home or Nest Hub on a schedule. Node, FFmpeg, and an HLS relay over the Cast protocol.</p>
+            <span style="display: inline-flex; gap: 1rem; flex-wrap: wrap;">
+              <a href="https://radio.atthebunga.com" target="_blank" rel="noopener noreferrer" class="link-arrow" style="font-size: 0.78rem;" aria-label="Open Gurbani Radio (opens in new tab)">
+                Open app
+                <svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true" focusable="false" style="margin-left: 2px;">
+                  <path d="M2.5 9.5L9.5 2.5M9.5 2.5H4.5M9.5 2.5V7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </a>
+              <a href="https://github.com/thehimmat/google-home-radiocaster" target="_blank" rel="noopener noreferrer" class="link-arrow" style="font-size: 0.78rem;" aria-label="View Radio Caster on GitHub (opens in new tab)">
+                GitHub
+                <svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true" focusable="false" style="margin-left: 2px;">
+                  <path d="M2.5 9.5L9.5 2.5M9.5 2.5H4.5M9.5 2.5V7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </a>
+            </span>
           </div>
           <div class="mini-card">
             <p style="font-weight: 600; font-size: 0.9rem; margin: 0 0 0.4rem; color: var(--charcoal);">Gurmukhi Input</p>
@@ -442,7 +494,19 @@
             </span>
           </div>
           <div class="mini-card">
+            <p style="font-weight: 600; font-size: 0.9rem; margin: 0 0 0.4rem; color: var(--charcoal);">Gurmukhi Voice Search</p>
+            <p style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--warm-brown-accessible); font-weight: 600; margin: 0 0 0.4rem;">Coming soon</p>
+            <p style="font-size: 0.83rem; color: var(--charcoal-light); line-height: 1.5; margin: 0 0 0.6rem;">AI-powered speech recognition for Gurmukhi. Say a line and find it. Uses wav2vec2 and semantic similarity.</p>
+            <a href="https://github.com/thehimmat/gurmukhi-voice-search" target="_blank" rel="noopener noreferrer" class="link-arrow" style="font-size: 0.78rem;" aria-label="View Voice Search on GitHub (opens in new tab)">
+              GitHub
+              <svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true" focusable="false" style="margin-left: 2px;">
+                <path d="M2.5 9.5L9.5 2.5M9.5 2.5H4.5M9.5 2.5V7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          </div>
+          <div class="mini-card">
             <p style="font-weight: 600; font-size: 0.9rem; margin: 0 0 0.4rem; color: var(--charcoal);">Gurbani Diff</p>
+            <p style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--warm-brown-accessible); font-weight: 600; margin: 0 0 0.4rem;">Coming soon</p>
             <p style="font-size: 0.83rem; color: var(--charcoal-light); line-height: 1.5; margin: 0 0 0.6rem;">Side-by-side comparison of Gurbani line-splits across digitization sources. For scholars and editors.</p>
             <a href="https://github.com/thehimmat/gurbani-diff" target="_blank" rel="noopener noreferrer" class="link-arrow" style="font-size: 0.78rem;" aria-label="View Gurbani Diff on GitHub (opens in new tab)">
               GitHub
@@ -471,20 +535,6 @@
           </a>
         </div>
 
-        <div class="card">
-          <span class="card-badge card-badge-pending">Side project</span>
-          <h3 style="font-size: 1.2rem; margin: 0 0 0.4rem; color: var(--charcoal);">Radio Caster</h3>
-          <p style="font-size: 0.85rem; color: var(--charcoal-light); line-height: 1.6; margin: 0 0 0.75rem;">
-            Plays public radio on a Google Home or Nest Hub on a cron schedule, using the Cast protocol. Node, FFmpeg, and an HLS relay.
-          </p>
-          <a href="https://github.com/thehimmat/google-home-radiocaster" target="_blank" rel="noopener noreferrer" class="link-arrow" style="font-size: 0.83rem;" aria-label="View Radio Caster on GitHub (opens in new tab)">
-            View on GitHub
-            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true" focusable="false" style="margin-left: 2px;">
-              <path d="M2.5 9.5L9.5 2.5M9.5 2.5H4.5M9.5 2.5V7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </a>
-        </div>
-
       </div>
 
       <div style="padding: 1.25rem; background: var(--parchment-dark); border-radius: 4px; border: 1px solid var(--divider);">
@@ -504,8 +554,8 @@
       </h2>
       <p style="font-size: 1.05rem; color: var(--charcoal-light); max-width: 36rem; line-height: 1.7; margin: 0 0 3rem;">
         I've been teaching Gurmukhi online since 2020, especially for English
-        speakers who didn't grow up with Punjabi at home. The tools I'm building
-        are the technical layer of the same work.
+        speakers who didn't grow up with Punjabi at home. The tools above are the
+        technical layer of the same work.
       </p>
 
       <div class="card" style="margin-bottom: 2rem;">
@@ -526,7 +576,7 @@
             </p>
             <div class="flex-wrap-row">
               <a href="https://atthebunga.com" target="_blank" rel="noopener noreferrer" class="btn-primary" aria-label="Visit atthebunga.com (opens in new tab)">Visit atthebunga.com</a>
-              <a href="https://cal.com/atthebunga" target="_blank" rel="noopener noreferrer" class="btn-outline" aria-label="Book a Gurmukhi class (opens in new tab)">Book a class</a>
+              <a href="https://atthebunga.com/group" target="_blank" rel="noopener noreferrer" class="btn-outline" aria-label="See Gurmukhi classes and book (opens in new tab)">See classes &amp; book</a>
             </div>
           </div>
           <div class="teach-sidebar">
@@ -549,37 +599,6 @@
         all and devoted to scholarship and practice. That spirit is what atthebunga.com
         is trying to carry forward.
       </p>
-    </section>
-
-
-    <!-- COACH -->
-    <section id="coach" class="section-pad" aria-labelledby="coach-heading">
-      <p class="section-label">Coach</p>
-      <h2 id="coach-heading" style="font-size: clamp(2rem, 4vw, 2.8rem); margin: 0 0 1rem; color: var(--charcoal);">
-        Parent coaching
-      </h2>
-      <p style="font-size: 1.05rem; color: var(--charcoal-light); max-width: 36rem; line-height: 1.7; margin: 0 0 3rem;">
-        Six years as a residential counselor taught me that children thrive when life
-        is not rushed. I'm a certified Simplicity Parenting coach, working with
-        families who want calm, clarity, and a steadier home.
-      </p>
-
-      <div class="card">
-        <span class="card-badge card-badge-live">Live — Portland + Remote</span>
-        <h3 style="font-size: 1.8rem; margin: 0 0 0.75rem; color: var(--charcoal);">Himmat Coaching</h3>
-        <p style="font-style: italic; font-family: 'Crimson Pro', serif; font-size: 1.05rem; color: var(--charcoal-light); margin: 0 0 0.75rem;">
-          "Simplicity, Rhythm, Connection"
-        </p>
-        <p style="color: var(--charcoal-light); line-height: 1.7; font-size: 0.95rem; margin: 0 0 1.25rem; max-width: 36rem;">
-          Parent coaching for families who want calm, clarity, and confidence
-          in their home. Rooted in the Simplicity Parenting framework, grounded
-          in research and focused on reducing overwhelm and building real connection.
-        </p>
-        <div class="flex-wrap-row">
-          <a href="https://himmatcoaching.com" target="_blank" rel="noopener noreferrer" class="btn-primary" aria-label="Visit himmatcoaching.com (opens in new tab)">Visit himmatcoaching.com</a>
-          <a href="https://cal.com/himmat" target="_blank" rel="noopener noreferrer" class="btn-outline" aria-label="Book a free intro coaching call (opens in new tab)">Free intro call</a>
-        </div>
-      </div>
     </section>
 
 
@@ -635,8 +654,6 @@
       <nav aria-label="Footer navigation">
         <p style="font-size: 0.82rem; margin: 0 0 0.5rem;">
           <a href="https://atthebunga.com" target="_blank" rel="noopener noreferrer" aria-label="Visit atthebunga.com (opens in new tab)">atthebunga.com</a>
-          <span aria-hidden="true">&nbsp;·&nbsp;</span>
-          <a href="https://himmatcoaching.com" target="_blank" rel="noopener noreferrer" aria-label="Visit himmatcoaching.com (opens in new tab)">himmatcoaching.com</a>
           <span aria-hidden="true">&nbsp;·&nbsp;</span>
           <a href="https://github.com/thehimmat" target="_blank" rel="noopener noreferrer" aria-label="View GitHub profile (opens in new tab)">GitHub</a>
           <span aria-hidden="true">&nbsp;·&nbsp;</span>
