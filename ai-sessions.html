@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="One-to-one AI sessions for beginners and small businesses with Himmat Singh Khalsa, a software engineer who teaches adults from zero. Tool-neutral, on your own accounts, fixed prices.">
+  <title>AI Sessions — Himmat Singh Khalsa</title>
+  <link href="./output.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="hFavicon.png?v=2">
+  <style>
+    :root {
+      --parchment: #fef8e8;
+      --parchment-dark: #f5edd8;
+      --charcoal: #3d3633;
+      --charcoal-light: #6b5f58;
+      --warm-brown: #7c6a52;
+      --warm-brown-accessible: #6b5a44; /* darkened for small text contrast */
+      --warm-brown-light: #a89278;
+      --divider: #e8dcc8;
+      --nav-height: 3.5rem;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: calc(var(--nav-height) + 1.5rem);
+    }
+
+    body {
+      background-color: var(--parchment);
+      color: var(--charcoal);
+      font-family: 'Montserrat', sans-serif;
+      margin: 0;
+    }
+
+    h1, h2, h3 { font-family: 'Crimson Pro', serif; }
+
+    /* Skip link */
+    .skip-link {
+      position: absolute;
+      top: -100%;
+      left: 1rem;
+      background: var(--charcoal);
+      color: var(--parchment);
+      padding: 0.5rem 1rem;
+      border-radius: 0 0 4px 4px;
+      font-size: 0.85rem;
+      text-decoration: none;
+      z-index: 200;
+      transition: top 0.1s;
+    }
+    .skip-link:focus { top: 0; }
+
+    :focus-visible {
+      outline: 2px solid var(--warm-brown);
+      outline-offset: 3px;
+      border-radius: 2px;
+    }
+
+    /* Nav */
+    .site-nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 50;
+      background-color: var(--parchment);
+      border-bottom: 1px solid var(--divider);
+      height: var(--nav-height);
+    }
+    .nav-inner {
+      max-width: 56rem;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      height: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .nav-logo {
+      font-family: 'Crimson Pro', serif;
+      font-size: 1.05rem;
+      color: var(--charcoal);
+      font-weight: 600;
+      text-decoration: none;
+    }
+    .nav-logo:hover { color: var(--warm-brown); }
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .nav-links a {
+      color: var(--charcoal-light);
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover, .nav-links a[aria-current="page"] { color: var(--charcoal); }
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.25rem;
+      color: var(--charcoal);
+    }
+    @media (max-width: 720px) {
+      .nav-toggle { display: flex; align-items: center; justify-content: center; }
+      .nav-links {
+        display: none;
+        position: fixed;
+        top: var(--nav-height);
+        left: 0;
+        right: 0;
+        background: var(--parchment);
+        border-bottom: 1px solid var(--divider);
+        flex-direction: column;
+        gap: 0;
+        padding: 0.5rem 0 1rem;
+        z-index: 49;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+      }
+      .nav-links.open { display: flex; }
+      .nav-links li { width: 100%; }
+      .nav-links a {
+        display: block;
+        padding: 0.75rem 1.5rem;
+        font-size: 0.85rem;
+      }
+    }
+
+    section { border-top: 1px solid var(--divider); }
+
+    .section-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--warm-brown-accessible);
+      font-weight: 600;
+      margin: 0 0 1rem;
+    }
+
+    .card {
+      background: var(--parchment-dark);
+      border: 1px solid var(--divider);
+      border-radius: 6px;
+      padding: 1.5rem;
+    }
+
+    /* Offer cards */
+    .offer {
+      display: flex;
+      flex-direction: column;
+    }
+    .offer-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 1rem;
+      margin: 0 0 0.75rem;
+    }
+    .offer-length {
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--warm-brown-accessible);
+      font-weight: 600;
+    }
+    .offer-price {
+      font-family: 'Crimson Pro', serif;
+      font-size: 1.6rem;
+      font-weight: 600;
+      color: var(--charcoal);
+      line-height: 1;
+    }
+    .offer h3 { font-size: 1.4rem; margin: 0 0 0.25rem; color: var(--charcoal); }
+    .offer-for { font-size: 0.83rem; color: var(--charcoal-light); font-style: italic; margin: 0 0 1rem; }
+    .offer p, .offer li { font-size: 0.88rem; color: var(--charcoal-light); line-height: 1.65; }
+    .offer p { margin: 0 0 1rem; }
+    .offer ul { margin: 0 0 1rem; padding-left: 1.1rem; list-style: disc; }
+    .offer-subhead {
+      font-size: 0.72rem !important;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--warm-brown-accessible) !important;
+      font-weight: 600;
+      margin: 0 0 0.4rem !important;
+    }
+    .offer-cta { margin-top: auto; padding-top: 0.5rem; }
+
+    .btn-primary {
+      display: inline-block;
+      background: var(--charcoal);
+      color: var(--parchment);
+      font-size: 0.85rem;
+      letter-spacing: 0.05em;
+      padding: 0.65rem 1.4rem;
+      border-radius: 4px;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .btn-primary:hover { background: var(--warm-brown); }
+
+    .btn-outline {
+      display: inline-block;
+      border: 1px solid var(--charcoal);
+      color: var(--charcoal);
+      font-size: 0.85rem;
+      letter-spacing: 0.05em;
+      padding: 0.65rem 1.4rem;
+      border-radius: 4px;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .btn-outline:hover { background: var(--charcoal); color: var(--parchment); }
+
+    .grid-auto { display: grid; gap: 1.5rem; }
+    @media (min-width: 640px) {
+      .grid-auto { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    .flex-wrap-row { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+
+    .steps {
+      list-style: none;
+      counter-reset: step;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 1rem;
+    }
+    @media (min-width: 640px) { .steps { grid-template-columns: repeat(3, 1fr); } }
+    .steps li {
+      counter-increment: step;
+      font-size: 0.9rem;
+      color: var(--charcoal-light);
+      line-height: 1.65;
+    }
+    .steps li::before {
+      content: counter(step);
+      display: block;
+      font-family: 'Crimson Pro', serif;
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: var(--warm-brown);
+      line-height: 1;
+      margin-bottom: 0.4rem;
+    }
+
+    .prose { max-width: 40rem; font-size: 0.95rem; color: var(--charcoal-light); line-height: 1.75; }
+    .prose p { margin: 0 0 1rem; }
+    .prose ul { margin: 0 0 1rem; padding-left: 1.1rem; list-style: disc; }
+
+    .section-pad { padding: 3.5rem 0; }
+    @media (min-width: 640px) { .section-pad { padding: 4.5rem 0; } }
+    .hero-pad { padding: 5.5rem 0 3rem; }
+    @media (min-width: 640px) { .hero-pad { padding: 7rem 0 4rem; } }
+
+    footer { background: var(--charcoal); color: var(--warm-brown-light); }
+    footer a { color: var(--parchment-dark); text-decoration: none; }
+    footer a:hover { color: white; }
+  </style>
+</head>
+<body>
+
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <nav class="site-nav" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">Himmat Singh Khalsa</a>
+
+      <button
+        class="nav-toggle"
+        aria-expanded="false"
+        aria-controls="nav-menu"
+        aria-label="Open navigation menu"
+      >
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true" focusable="false">
+          <rect y="4" width="22" height="2" rx="1" fill="currentColor"/>
+          <rect y="10" width="22" height="2" rx="1" fill="currentColor"/>
+          <rect y="16" width="22" height="2" rx="1" fill="currentColor"/>
+        </svg>
+      </button>
+
+      <ul class="nav-links" id="nav-menu" role="list">
+        <li><a href="index.html#build">Build</a></li>
+        <li><a href="index.html#teach">Teach</a></li>
+        <li><a href="ai-sessions.html" aria-current="page">AI sessions</a></li>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="work-with-me.html">Work with me</a></li>
+        <li><a href="support.html">Support</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main id="main-content" style="max-width: 56rem; margin: 0 auto; padding: 0 1.5rem;">
+
+    <!-- Hero -->
+    <section class="hero-pad" aria-labelledby="hero-heading" style="border-top: none;">
+      <p class="section-label">AI sessions</p>
+      <h1 id="hero-heading" style="font-size: clamp(2.2rem, 4.5vw, 3.4rem); line-height: 1.15; margin: 0 0 1.25rem; color: var(--charcoal);">
+        Get AI working on your own tasks
+      </h1>
+      <p style="font-size: 1.1rem; max-width: 38rem; color: var(--charcoal-light); line-height: 1.7; margin: 0 0 1rem;">
+        One-to-one sessions for beginners and for small businesses without tech
+        staff. We work on your device, in your accounts, on a task you actually
+        have, and you leave with something that works.
+      </p>
+      <p style="font-size: 0.98rem; max-width: 38rem; color: var(--charcoal-light); line-height: 1.7; margin: 0 0 2rem;">
+        I build AI tools as a software engineer, and I've taught adults a new
+        script from zero since 2020. I don't sell or recommend any particular AI
+        product. I'll tell you what a tool is good for, where it isn't, and
+        when you don't need AI at all.
+      </p>
+      <div class="flex-wrap-row">
+        <a href="https://calendar.app.google/CUY8acnhKHFmiaiW8" target="_blank" rel="noopener noreferrer" class="btn-primary" aria-label="Book a free intro call (opens in new tab)">Book a free intro call</a>
+        <a href="#sessions" class="btn-outline">See sessions &amp; prices</a>
+      </div>
+    </section>
+
+    <!-- How it works -->
+    <section class="section-pad" aria-labelledby="how-heading">
+      <p class="section-label">How it works</p>
+      <h2 id="how-heading" style="font-size: clamp(1.8rem, 3.5vw, 2.4rem); margin: 0 0 2rem; color: var(--charcoal);">
+        Three steps
+      </h2>
+      <ol class="steps">
+        <li>Book a free 15-minute intro call so we can check that a session fits what you need, or go straight to booking a session.</li>
+        <li>Pay when you book, then fill in a short intake form that tells me which task or question to prepare for.</li>
+        <li>We work live on video, in your own accounts. You get a recording and written notes afterward.</li>
+      </ol>
+    </section>
+
+    <!-- Sessions -->
+    <section id="sessions" class="section-pad" aria-labelledby="sessions-heading">
+      <p class="section-label">Sessions</p>
+      <h2 id="sessions-heading" style="font-size: clamp(1.8rem, 3.5vw, 2.4rem); margin: 0 0 0.75rem; color: var(--charcoal);">
+        Sessions &amp; prices
+      </h2>
+      <p style="font-size: 0.95rem; color: var(--charcoal-light); max-width: 38rem; line-height: 1.7; margin: 0 0 2.5rem;">
+        Fixed prices, paid when you book. Each session covers one focus, so
+        we finish with something that works.
+      </p>
+
+      <div class="grid-auto" style="margin-bottom: 1.5rem;">
+
+        <article class="card offer" aria-labelledby="offer-personal">
+          <div class="offer-meta">
+            <span class="offer-length">60 minutes</span>
+            <span class="offer-price">$100</span>
+          </div>
+          <h3 id="offer-personal">Personal AI session</h3>
+          <p class="offer-for">For individuals. No tech background needed.</p>
+          <p class="offer-subhead">Pick one focus</p>
+          <ul>
+            <li>Getting real use out of a chatbot for your own work and life</li>
+            <li>Safe-use setup: privacy settings, checking answers, spotting AI scams</li>
+            <li>Family AI rules for parents of teens</li>
+          </ul>
+          <p class="offer-subhead">You get</p>
+          <ul>
+            <li>The session recording</li>
+            <li>One page of notes with the prompts and settings we used</li>
+          </ul>
+          <p style="font-size: 0.8rem;">Sliding scale available on request.</p>
+          <div class="offer-cta">
+            <a href="https://calendar.app.google/Uruq9CjFqzNbzPicA" target="_blank" rel="noopener noreferrer" class="btn-primary" aria-label="Book a personal AI session (opens in new tab)">Book this session</a>
+          </div>
+        </article>
+
+        <article class="card offer" aria-labelledby="offer-business">
+          <div class="offer-meta">
+            <span class="offer-length">90 minutes</span>
+            <span class="offer-price">$250</span>
+          </div>
+          <h3 id="offer-business">Small-business working session</h3>
+          <p class="offer-for">For owners with no tech staff.</p>
+          <p>
+            Bring one task you repeat every week, such as emails, marketing
+            content or research. We'll turn it into a workflow you can repeat
+            in your own account. I'll also give you a straight answer on which
+            tools are worth using and which to skip.
+          </p>
+          <p class="offer-subhead">You get</p>
+          <ul>
+            <li>The session recording</li>
+            <li>A one-to-two-page action plan within 48 hours</li>
+            <li>14 days of email follow-up</li>
+          </ul>
+          <p style="font-size: 0.8rem;">The fee is credited toward any later package.</p>
+          <div class="offer-cta">
+            <a href="https://calendar.app.google/RQKBFk6miyV9Rvgm8" target="_blank" rel="noopener noreferrer" class="btn-primary" aria-label="Book a small-business working session (opens in new tab)">Book this session</a>
+          </div>
+        </article>
+
+        <article class="card offer" aria-labelledby="offer-safe">
+          <div class="offer-meta">
+            <span class="offer-length">90 minutes</span>
+            <span class="offer-price">$350</span>
+          </div>
+          <h3 id="offer-safe">Safe AI use setup</h3>
+          <p class="offer-for">For small businesses whose staff already use AI.</p>
+          <p>
+            We list which AI tools are in use and on which plans, and check
+            their data settings. Then we set simple rules for what may be
+            pasted where, plus a step where a person checks AI output before
+            it goes out.
+          </p>
+          <p class="offer-subhead">You get</p>
+          <ul>
+            <li>A one-page AI use policy, written as house rules</li>
+            <li>A settings checklist for the tools you use</li>
+            <li>A list of questions to take to your attorney</li>
+          </ul>
+          <p style="font-size: 0.8rem;">Booked after a free intro call, so I can prepare for the tools your team uses.</p>
+          <div class="offer-cta">
+            <a href="https://calendar.app.google/CUY8acnhKHFmiaiW8" target="_blank" rel="noopener noreferrer" class="btn-primary" aria-label="Start with a free intro call (opens in new tab)">Start with a free intro call</a>
+          </div>
+        </article>
+
+        <article class="card offer" aria-labelledby="offer-email">
+          <div class="offer-meta">
+            <span class="offer-length">By email</span>
+            <span class="offer-price">$50</span>
+          </div>
+          <h3 id="offer-email">Email consultation</h3>
+          <p class="offer-for">For a single question, or a follow-up after any session.</p>
+          <p>
+            Send one question, or a workflow you're stuck on. You'll get a
+            written answer within two business days.
+          </p>
+          <div class="offer-cta">
+            <!-- TODO: replace with Stripe Payment Link (email consultation) -->
+            <a href="mailto:himmatsinghkhalsa@gmail.com?subject=AI%20session%20%E2%80%94%20Email%20consultation" class="btn-primary">Buy a consultation</a>
+          </div>
+        </article>
+
+      </div>
+
+      <div class="card" style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1rem;">
+        <div style="flex: 1; min-width: 14rem;">
+          <h3 style="font-size: 1.25rem; margin: 0 0 0.25rem; color: var(--charcoal);">Not sure which fits?</h3>
+          <p style="font-size: 0.88rem; color: var(--charcoal-light); line-height: 1.6; margin: 0;">
+            A free 15-minute call. We'll talk through what you want to get
+            done and whether I'm the right person to help.
+          </p>
+        </div>
+        <a href="https://calendar.app.google/CUY8acnhKHFmiaiW8" target="_blank" rel="noopener noreferrer" class="btn-outline" aria-label="Book a free intro call (opens in new tab)">Book a free intro call</a>
+      </div>
+    </section>
+
+    <!-- Right-sized AI -->
+    <section class="section-pad" aria-labelledby="rightsized-heading">
+      <p class="section-label">In every session</p>
+      <h2 id="rightsized-heading" style="font-size: clamp(1.8rem, 3.5vw, 2.4rem); margin: 0 0 1.25rem; color: var(--charcoal);">
+        Right-sized AI use
+      </h2>
+      <div class="prose">
+        <p>
+          A few minutes of every session go to using the right amount of AI for
+          the job. Everyday text chat has a small energy footprint. Most of the
+          energy goes to video generation, always-on reasoning modes, models
+          bigger than the task needs, and automations left running unattended.
+          Those are often where the bill goes too.
+        </p>
+      </div>
+    </section>
+
+    <!-- Scope -->
+    <section class="section-pad" aria-labelledby="scope-heading">
+      <p class="section-label">Scope</p>
+      <h2 id="scope-heading" style="font-size: clamp(1.8rem, 3.5vw, 2.4rem); margin: 0 0 1.25rem; color: var(--charcoal);">
+        What these sessions are, and what they aren't
+      </h2>
+      <div class="prose">
+        <p>
+          Sessions are educational and operational. They are not legal, tax,
+          or financial advice. In particular, I don't:
+        </p>
+        <ul>
+          <li>tell you whether a law applies to you, or sign off that a policy is compliant</li>
+          <li>write customer-facing privacy notices or contract terms</li>
+          <li>advise on AI used in hiring, lending, or tenant screening</li>
+          <li>build custom automations or work in your systems outside a session</li>
+          <li>give counseling. If a family conversation raises mental-health concerns, I'll point you to someone qualified</li>
+        </ul>
+        <p>
+          If something needs a lawyer, I'll tell you, and you'll go to them
+          with a clear list of questions.
+        </p>
+      </div>
+    </section>
+
+    <!--
+      Testimonials — uncomment once there are real quotes (with permission).
+    <section class="section-pad" aria-labelledby="testimonials-heading">
+      <p class="section-label">Kind words</p>
+      <h2 id="testimonials-heading" style="font-size: clamp(1.8rem, 3.5vw, 2.4rem); margin: 0 0 2rem; color: var(--charcoal);">
+        From past sessions
+      </h2>
+      <div class="grid-auto">
+        <figure class="card" style="margin: 0;">
+          <blockquote style="font-family: 'Crimson Pro', serif; font-size: 1.1rem; font-style: italic; color: var(--charcoal); line-height: 1.6; margin: 0 0 0.75rem;">
+            "Quote goes here."
+          </blockquote>
+          <figcaption style="font-size: 0.8rem; color: var(--charcoal-light);">Name, role or business</figcaption>
+        </figure>
+      </div>
+    </section>
+    -->
+
+  </main>
+
+  <footer style="margin-top: 4rem; padding: 2.5rem 1.5rem; text-align: center;" role="contentinfo">
+    <div style="max-width: 56rem; margin: 0 auto;">
+      <nav aria-label="Footer navigation">
+        <p style="font-size: 0.82rem; margin: 0 0 0.5rem;">
+          <a href="https://atthebunga.com" target="_blank" rel="noopener noreferrer" aria-label="Visit atthebunga.com (opens in new tab)">atthebunga.com</a>
+          <span aria-hidden="true">&nbsp;·&nbsp;</span>
+          <a href="https://github.com/thehimmat" target="_blank" rel="noopener noreferrer" aria-label="View GitHub profile (opens in new tab)">GitHub</a>
+          <span aria-hidden="true">&nbsp;·&nbsp;</span>
+          <a href="support.html">Support</a>
+        </p>
+      </nav>
+      <p style="font-size: 0.78rem; color: var(--warm-brown-light); margin: 0.5rem 0 0;">
+        <small>&copy; 2026 Himmat Singh Khalsa</small>
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    // Hamburger menu toggle
+    const toggle = document.querySelector('.nav-toggle');
+    const menu = document.getElementById('nav-menu');
+
+    function closeMenu() {
+      menu.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.setAttribute('aria-label', 'Open navigation menu');
+    }
+
+    toggle.addEventListener('click', function () {
+      const isOpen = menu.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', isOpen);
+      toggle.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
+    });
+
+    menu.querySelectorAll('a').forEach(function (link) {
+      link.addEventListener('click', closeMenu);
+    });
+
+    document.addEventListener('click', function (e) {
+      if (!toggle.contains(e.target) && !menu.contains(e.target)) closeMenu();
+    });
+  </script>
+
+</body>
+</html>
