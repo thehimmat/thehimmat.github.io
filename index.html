@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Himmat Singh Khalsa — software engineer. Local-first document AI, Gurmukhi and Gurbani apps, and online Gurmukhi classes at atthebunga.com.">
+  <meta name="description" content="Himmat Singh Khalsa — software engineer. Local-first document AI, Gurmukhi and Gurbani apps, online Gurmukhi classes at atthebunga.com, and one-to-one AI sessions for beginners and small businesses.">
   <title>Himmat Singh Khalsa</title>
   <link href="./output.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
@@ -133,7 +133,7 @@
     }
 
     /* Mobile nav drawer */
-    @media (max-width: 600px) {
+    @media (max-width: 720px) {
       .nav-toggle { display: flex; align-items: center; justify-content: center; }
 
       .nav-links {
@@ -336,6 +336,7 @@
       <ul class="nav-links" id="nav-menu" role="list">
         <li><a href="#build">Build</a></li>
         <li><a href="#teach">Teach</a></li>
+        <li><a href="#ai-sessions">AI sessions</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="work-with-me.html">Work with me</a></li>
         <li><a href="support.html">Support</a></li>
@@ -353,7 +354,9 @@
       <p style="font-size: 1.15rem; max-width: 38rem; color: var(--charcoal-light); line-height: 1.7; margin: 0 0 2.5rem;">
         I'm a software engineer building local-first AI tools and a suite of apps
         that make Gurbani searchable, readable, and pronounceable. I also teach
-        Gurmukhi online at atthebunga.com.
+        Gurmukhi online at atthebunga.com, and run one-to-one
+        <a href="ai-sessions.html" style="color: var(--warm-brown-accessible); font-weight: 500;">AI sessions</a>
+        for beginners and small businesses.
       </p>
       <div class="flex-wrap-row">
         <a href="#build" class="btn-primary">See the work</a>
@@ -604,6 +607,41 @@
     </section>
 
 
+    <!-- AI SESSIONS -->
+    <section id="ai-sessions" class="section-pad" aria-labelledby="ai-sessions-heading">
+      <p class="section-label">AI sessions</p>
+      <h2 id="ai-sessions-heading" style="font-size: clamp(2rem, 4vw, 2.8rem); margin: 0 0 1rem; color: var(--charcoal);">
+        AI help for beginners
+      </h2>
+      <p style="font-size: 1.05rem; color: var(--charcoal-light); max-width: 36rem; line-height: 1.7; margin: 0 0 2.5rem;">
+        One-to-one sessions for individuals and small businesses. Everything
+        happens in your own accounts, on a task you actually have. I don't
+        sell or promote any AI product, and you leave with something that works.
+      </p>
+
+      <div class="grid-auto grid-auto-sm" style="margin-bottom: 2rem;">
+        <div class="mini-card" style="background: var(--parchment-dark);">
+          <p style="font-weight: 600; font-size: 0.9rem; margin: 0 0 0.4rem; color: var(--charcoal);">Personal AI session <span style="font-weight: 500; color: var(--warm-brown-accessible);">· $100</span></p>
+          <p style="font-size: 0.83rem; color: var(--charcoal-light); line-height: 1.5; margin: 0;">60 minutes on one focus: getting real use from a chatbot, safe-use setup, or family AI rules for parents of teens.</p>
+        </div>
+        <div class="mini-card" style="background: var(--parchment-dark);">
+          <p style="font-weight: 600; font-size: 0.9rem; margin: 0 0 0.4rem; color: var(--charcoal);">Small-business working session <span style="font-weight: 500; color: var(--warm-brown-accessible);">· $250</span></p>
+          <p style="font-size: 0.83rem; color: var(--charcoal-light); line-height: 1.5; margin: 0;">90 minutes turning one task you repeat every week into a workflow you can reuse, plus an action plan and 14 days of email follow-up.</p>
+        </div>
+        <div class="mini-card" style="background: var(--parchment-dark);">
+          <p style="font-weight: 600; font-size: 0.9rem; margin: 0 0 0.4rem; color: var(--charcoal);">Safe AI use setup <span style="font-weight: 500; color: var(--warm-brown-accessible);">· $350</span></p>
+          <p style="font-size: 0.83rem; color: var(--charcoal-light); line-height: 1.5; margin: 0;">For teams already using AI: check tools and settings, then write simple house rules for what goes where.</p>
+        </div>
+      </div>
+
+      <div class="flex-wrap-row">
+        <a href="ai-sessions.html" class="btn-primary">See sessions &amp; prices</a>
+        <!-- TODO: replace with Google Calendar booking link (intro call) -->
+        <a href="mailto:himmatsinghkhalsa@gmail.com?subject=AI%20session%20%E2%80%94%20free%20intro%20call" class="btn-outline">Book a free intro call</a>
+      </div>
+    </section>
+
+
     <!-- ABOUT -->
     <section id="about" class="section-pad" aria-labelledby="about-heading">
       <p class="section-label">About</p>
@@ -644,6 +682,7 @@
       <div style="margin-top: 2.5rem; padding-top: 2rem; border-top: 1px solid var(--divider); display: flex; gap: 1.5rem; flex-wrap: wrap; align-items: center;">
         <a href="https://github.com/thehimmat" target="_blank" rel="noopener noreferrer" class="link-arrow" aria-label="View GitHub profile (opens in new tab)">GitHub</a>
         <a href="mailto:himmatsinghkhalsa@gmail.com" class="link-arrow">Email</a>
+        <a href="ai-sessions.html" class="link-arrow">AI sessions</a>
         <a href="work-with-me.html" class="link-arrow">Work with me</a>
         <a href="support.html" class="link-arrow">Support this work</a>
       </div>
